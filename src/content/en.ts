@@ -149,15 +149,15 @@ export const en = {
         cats: ["data"],
         kicker: "Data engineering · UK client · Remote",
         title: "Salesforce data migration",
-        text: "Migration of opportunities, quotes and pricing data, with validation and reconciliation after every run.",
-        tags: ["Python", "SOQL", "Azure Data Factory"],
+        text: "Python scripts that extract opportunities, quotes and pricing data from a legacy Salesforce org, clean and transform them, and load them into the new org. They run as Azure Data Factory pipelines, with validation and reconciliation after every run.",
+        tags: ["Python", "SOQL", "Salesforce", "Azure Data Factory"],
       },
       {
         id: "reconciliation",
         cats: ["data"],
         kicker: "Data engineering · UK client · Remote",
         title: "Data reconciliation",
-        text: "Repeatable checks that compare Salesforce with the Databricks platform and explain every mismatch.",
+        text: "SQL and Python scripts that extract the data on both sides, compare Salesforce with the Databricks platform record by record, and explain every mismatch. Written to be run again after each load.",
         tags: ["Databricks SQL", "Python"],
       },
       {
@@ -201,7 +201,7 @@ export const en = {
         company: "Punic Insight LTD",
         place: "United Kingdom · Remote",
         dates: "Nov 2024 - Apr 2025",
-        text: "Migrated Salesforce data with Python and SOQL, built Azure Data Factory pipelines and supported production deployments.",
+        text: "Migrated data from a legacy Salesforce org to a new one with Python and SOQL, run as Azure Data Factory pipelines, and supported production deployments.",
       },
       {
         role: "Data Engineer Intern",

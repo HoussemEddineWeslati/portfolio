@@ -150,15 +150,15 @@ export const fr: Dict = {
         cats: ["data"],
         kicker: "Ingénierie des données · Client britannique · À distance",
         title: "Migration de données Salesforce",
-        text: "Migration des opportunités, des devis et des données de tarification, avec validation et rapprochement après chaque exécution.",
-        tags: ["Python", "SOQL", "Azure Data Factory"],
+        text: "Des scripts Python qui extraient les opportunités, les devis et les données de tarification d'une ancienne organisation Salesforce, les nettoient et les transforment, puis les chargent dans la nouvelle. Ils tournent en pipelines Azure Data Factory, avec validation et rapprochement après chaque exécution.",
+        tags: ["Python", "SOQL", "Salesforce", "Azure Data Factory"],
       },
       {
         id: "reconciliation",
         cats: ["data"],
         kicker: "Ingénierie des données · Client britannique · À distance",
         title: "Rapprochement de données",
-        text: "Des contrôles rejouables qui comparent Salesforce à la plateforme Databricks et expliquent chaque écart.",
+        text: "Des scripts SQL et Python qui extraient les données des deux côtés, comparent Salesforce à la plateforme Databricks ligne par ligne et expliquent chaque écart. Écrits pour être relancés après chaque chargement.",
         tags: ["Databricks SQL", "Python"],
       },
       {
@@ -202,7 +202,7 @@ export const fr: Dict = {
         company: "Punic Insight LTD",
         place: "Royaume-Uni · À distance",
         dates: "Nov. 2024 - Avr. 2025",
-        text: "Migration de données Salesforce en Python et SOQL, pipelines Azure Data Factory et accompagnement des mises en production.",
+        text: "Migration des données d'une ancienne organisation Salesforce vers la nouvelle en Python et SOQL, en pipelines Azure Data Factory, et accompagnement des mises en production.",
       },
       {
         role: "Stagiaire ingénieur Data",
