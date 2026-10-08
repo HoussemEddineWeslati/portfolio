@@ -1,26 +1,108 @@
 @import "tailwindcss";
 
+/* Colours are defined once, by role, for both themes. Components only ever
+   use the role (bg, surface, line, ink, muted, accent), never a raw value. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0b1220;
+  --surface: #111a2e;
+  --surface-2: #16213a;
+  --line: #1f2b45;
+  --ink: #f1f5f9;
+  --soft: #cbd5e1;
+  --muted: #94a3b8;
+  --accent: #34d399;
+  --accent-2: #38bdf8;
+  --accent-ink: #06281c;
+  --grid: rgb(255 255 255 / 0.04);
+  --glow: rgb(56 189 248 / 0.16);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --line: #e2e8f0;
+  --ink: #0f172a;
+  --soft: #334155;
+  --muted: #64748b;
+  --accent: #059669;
+  --accent-2: #0284c7;
+  --accent-ink: #ffffff;
+  --grid: rgb(15 23 42 / 0.05);
+  --glow: rgb(2 132 199 / 0.1);
+  color-scheme: light;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-soft: var(--soft);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-ink: var(--accent-ink);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* The faint grid and corner glow of the hero, shared with the GitHub banner. */
+.hero-backdrop {
+  background-image:
+    radial-gradient(60% 60% at 85% 0%, var(--glow), transparent 70%),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: auto, 44px 44px, 44px 44px;
+}
+
+.accent-text {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.accent-bar {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Theme toggle: both icons are rendered, the theme decides which one shows,
+   so the server and the browser never disagree on the markup. */
+.theme-sun {
+  display: none;
+}
+:root[data-theme="light"] .theme-sun {
+  display: block;
+}
+:root[data-theme="light"] .theme-moon {
+  display: none;
 }
