@@ -275,11 +275,11 @@ export const fr: Dict = {
           },
           {
             title: "Des droits par rôle, jusqu'à la fiche",
-            text: "Des droits par personne et par module, combinés à des matrices de responsabilités, décident qui voit et fait quoi, jusqu'à une fiche précise. Chaque règle est appliquée par l'API, pas seulement masquée dans l'interface.",
+            text: "Des droits par personne et par module décident qui voit et fait quoi, jusqu'à une fiche précise. Chaque règle est appliquée par l'API, pas seulement masquée dans l'interface.",
           },
           {
             title: "Le temps réel par défaut",
-            text: "Quand quelqu'un valide un document ou clôture une action, tous les autres utilisateurs le voient sans recharger, grâce aux WebSockets et à une invalidation ciblée du cache.",
+            text: "Quand un utilisateur modifie quelque chose, tous les autres le voient sans recharger, grâce aux WebSockets et à une invalidation ciblée du cache.",
           },
           {
             title: "Des rapports en deux langues",

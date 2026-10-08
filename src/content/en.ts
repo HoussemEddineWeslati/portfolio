@@ -274,11 +274,11 @@ export const en = {
           },
           {
             title: "Role-based access, down to the record",
-            text: "Permissions per person and per module, combined with responsibility matrices, decide who can see and do what, down to a single record. Every rule is enforced by the API, not only hidden in the interface.",
+            text: "Permissions per person and per module decide who can see and do what, down to a single record. Every rule is enforced by the API, not only hidden in the interface.",
           },
           {
             title: "Real time by default",
-            text: "When someone validates a document or closes an action, every other user sees it without reloading, through WebSockets and targeted cache invalidation.",
+            text: "When one user changes something, every other user sees it without reloading, through WebSockets and targeted cache invalidation.",
           },
           {
             title: "Reporting in two languages",
