@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Food ordering agent · interface</title>
+<title>Voice ordering agent · interface</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -27,7 +27,9 @@
   .sum div { display:flex; justify-content:space-between; font-size:12.5px; color:var(--soft); padding:1.5px 0; }
   .sum .tot { font-weight:700; color:var(--ink); font-size:13.5px; margin-top:4px; }
   .inp { padding:12px 14px 18px; border-top:1px solid var(--line); display:flex; gap:9px; align-items:center; }
-  .inp span { flex:1; height:42px; border-radius:999px; background:#f1f3ef; display:flex; align-items:center; padding:0 16px; color:var(--muted); }
+  .wave { flex:1; height:42px; border-radius:999px; background:#f1f3ef; display:flex; align-items:center; justify-content:center; gap:3.5px; padding:0 16px; }
+  .wave s { width:3px; border-radius:3px; background:var(--brand); opacity:.85; }
+  .spk { display:flex; align-items:center; gap:5px; font:500 9.5px "JetBrains Mono"; letter-spacing:.06em; text-transform:uppercase; margin-bottom:4px; opacity:.7; }
   .inp i { width:42px; height:42px; border-radius:50%; background:var(--brand); display:grid; place-items:center; color:#fff; font-style:normal; }
   .lab { position:absolute; left:24px; top:14px; font:500 10.5px "JetBrains Mono"; letter-spacing:.14em; text-transform:uppercase; color:#8b9485; }
 
@@ -65,16 +67,15 @@
 </head>
 <body>
 <div class="chat">
-  <span class="lab">Customer conversation</span>
+  <span class="lab">Customer voice call · live transcript</span>
   <div class="phone">
-    <div class="ph"><i>O</i><div><b>Order assistant</b><small>● Online · replies instantly</small></div></div>
+    <div class="ph"><i>O</i><div><b>Voice order assistant</b><small>● On call · 00:48</small></div></div>
     <div class="ms">
-      <div class="b u">Hi, I'd like two chicken shawarma and one large fries. No onions in one of them.</div>
+      <div class="b u"><div class="spk">🎙 Spoken · transcribed</div>Two chicken shawarma, a large fries and a water. No onions in one. Deliver to my office.</div>
       <div class="fn"><u>ƒ</u> search_menu("chicken shawarma, fries")</div>
-      <div class="b a">Got it. From <b>Dar El Shawarma</b>, 15 min from you: two chicken shawarma (one without onions) and a large fries. Anything to drink?</div>
-      <div class="b u">A bottle of water. Deliver to my office please.</div>
+      <div class="b a"><div class="spk">🔊 Voice reply · ElevenLabs</div>Got it, from <b>Dar El Shawarma</b>, 15 min from your office.</div>
       <div class="fn"><u>ƒ</u> create_order(restaurant, items, address)</div>
-      <div class="b a">Here is your order:
+      <div class="b a"><div class="spk">🔊 Voice reply · ElevenLabs</div>Here is your order:
         <div class="sum">
           <div><span>2 × Chicken shawarma</span><span>18.000</span></div>
           <div><span>1 × Large fries</span><span>5.500</span></div>
@@ -82,11 +83,11 @@
           <div class="tot"><span>Total with delivery</span><span>27.700 TND</span></div>
         </div>
       </div>
-      <div class="b u">Perfect, confirm.</div>
+      <div class="b u"><div class="spk">🎙 Spoken · transcribed</div>Perfect, confirm.</div>
       <div class="fn"><u>ƒ</u> send_to_restaurant(order #A-2184)</div>
-      <div class="b a">Sent to the restaurant. They accepted it: ready in about 20 minutes.</div>
+      <div class="b a"><div class="spk">🔊 Voice reply · ElevenLabs</div>Sent. Ready in about 20 minutes.</div>
     </div>
-    <div class="inp"><span>Write a message</span><i>➤</i></div>
+    <div class="inp"><div class="wave"><s style="height:8px"></s><s style="height:14px"></s><s style="height:22px"></s><s style="height:12px"></s><s style="height:26px"></s><s style="height:18px"></s><s style="height:30px"></s><s style="height:16px"></s><s style="height:24px"></s><s style="height:10px"></s><s style="height:20px"></s><s style="height:28px"></s><s style="height:14px"></s><s style="height:22px"></s><s style="height:9px"></s><s style="height:17px"></s><s style="height:25px"></s><s style="height:13px"></s><s style="height:21px"></s><s style="height:11px"></s><s style="height:19px"></s><s style="height:27px"></s><s style="height:12px"></s><s style="height:8px"></s></div><i><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></i></div>
   </div>
 </div>
 
