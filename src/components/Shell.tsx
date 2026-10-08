@@ -9,9 +9,11 @@ import "@/app/globals.css";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-/* Applies the saved theme before the first paint, so a light-theme visitor
-   never sees a dark flash. No saved choice means the default, dark. */
-const themeScript = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+/* Runs before the first paint. It marks the page as scripted (`html.js`), which
+   is what lets the stylesheet hide the elements that will be revealed on
+   scroll: without JavaScript nothing is ever hidden. It also applies the saved
+   theme, so a light-theme visitor never sees a dark flash. */
+const themeScript = `document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
 
 export function Shell({ lang, children }: { lang: Lang; children: React.ReactNode }) {
   return (

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Voice assistant on a ticketing site · interface</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#faf9f7; --panel:#fff; --line:#ebe8e2; --ink:#16130f; --soft:#45403a; --muted:#857f76; --brand:#e11d48; --brand-bg:#fff1f2; --ok:#059669; --a:#7c3aed; }
+  * { box-sizing:border-box; margin:0; }
+  body { width:1440px; height:900px; overflow:hidden; background:var(--bg); color:var(--ink); font:14px/1.5 Inter,system-ui,sans-serif; -webkit-font-smoothing:antialiased; position:relative; }
+  header { height:68px; background:var(--panel); border-bottom:1px solid var(--line); display:flex; align-items:center; padding:0 44px; gap:34px; }
+  .logo { font-weight:800; font-size:20px; letter-spacing:-.03em; display:flex; align-items:center; gap:9px; }
+  .logo i { width:30px; height:30px; border-radius:9px; background:var(--brand); display:grid; place-items:center; color:#fff; font:800 14px Inter; font-style:normal; }
+  nav { display:flex; gap:26px; color:var(--soft); font-weight:500; }
+  nav b { color:var(--ink); }
+  .srch { margin-left:auto; width:330px; height:40px; border-radius:999px; border:1px solid var(--line); background:var(--bg); display:flex; align-items:center; padding:0 16px; color:var(--muted); gap:9px; }
+  .a11y { height:40px; padding:0 15px; border-radius:999px; border:1.5px solid var(--ink); display:flex; align-items:center; gap:8px; font-weight:600; font-size:13px; }
+  .a11y svg { width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; }
+  .cart { width:40px; height:40px; border-radius:50%; background:var(--ink); color:#fff; display:grid; place-items:center; font-weight:600; font-size:13px; }
+
+  .page { padding:34px 44px; width:940px; }
+  h1 { font-size:34px; letter-spacing:-.035em; font-weight:800; }
+  .sub { color:var(--muted); margin-top:6px; font-size:15px; }
+  .chips { display:flex; gap:8px; margin:22px 0 22px; }
+  .chips span { padding:8px 15px; border-radius:999px; border:1px solid var(--line); background:#fff; font-weight:500; font-size:13px; color:var(--soft); }
+  .chips .on { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .ev { background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden; }
+  .ev.pick { border:2px solid var(--brand); box-shadow:0 14px 40px rgba(225,29,72,.16); }
+  .art { height:132px; position:relative; }
+  .art b { position:absolute; left:16px; top:14px; background:rgba(255,255,255,.92); border-radius:10px; padding:5px 9px; font-size:11px; text-align:center; line-height:1.15; font-weight:700; }
+  .art b small { display:block; color:var(--brand); font-size:10px; letter-spacing:.08em; }
+  .art em { position:absolute; right:14px; top:14px; background:rgba(22,19,15,.75); color:#fff; font-style:normal; font-size:11px; padding:4px 9px; border-radius:999px; font-weight:500; }
+  .g1 { background:radial-gradient(120% 140% at 0% 0%,#fb7185,transparent 60%),linear-gradient(135deg,#4c1d95,#0f172a); }
+  .g2 { background:radial-gradient(120% 140% at 100% 0%,#fbbf24,transparent 55%),linear-gradient(135deg,#b45309,#7c2d12); }
+  .g3 { background:radial-gradient(120% 140% at 0% 100%,#34d399,transparent 55%),linear-gradient(135deg,#065f46,#0f172a); }
+  .g4 { background:radial-gradient(120% 140% at 100% 100%,#60a5fa,transparent 55%),linear-gradient(135deg,#1e3a8a,#0f172a); }
+  .info { padding:15px 17px 16px; }
+  .info h3 { font-size:16.5px; letter-spacing:-.02em; }
+  .info p { color:var(--muted); font-size:13px; margin-top:3px; }
+  .row { display:flex; justify-content:space-between; align-items:center; margin-top:13px; }
+  .row b { font-size:16px; } .row b small { color:var(--muted); font-weight:500; font-size:12px; }
+  .buy { background:var(--ink); color:#fff; padding:9px 17px; border-radius:999px; font-weight:600; font-size:13px; }
+  .ev.pick .buy { background:var(--brand); }
+
+  /* assistant */
+  .va { position:absolute; right:40px; top:96px; width:404px; height:770px; background:#fff; border:1px solid var(--line); border-radius:26px; box-shadow:0 40px 90px -20px rgba(22,19,15,.3); display:flex; flex-direction:column; overflow:hidden; }
+  .vh { padding:18px 20px; display:flex; align-items:center; gap:12px; border-bottom:1px solid var(--line); }
+  .vh .ic { width:42px; height:42px; border-radius:14px; background:linear-gradient(135deg,var(--a),var(--brand)); display:grid; place-items:center; color:#fff; }
+  .vh svg { width:21px; height:21px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; }
+  .vh b { display:block; font-size:15.5px; } .vh small { color:var(--ok); font-weight:500; font-size:12.5px; }
+  .vh .x { margin-left:auto; display:flex; gap:6px; } .vh .x span { height:30px; padding:0 10px; border-radius:9px; border:1px solid var(--line); font:500 11px "JetBrains Mono"; display:flex; align-items:center; color:var(--soft); }
+  .msgs { flex:1; padding:18px 18px 8px; display:flex; flex-direction:column; gap:12px; background:linear-gradient(180deg,#fff,#fbfaf8); }
+  .m { max-width:86%; padding:12px 14px; border-radius:18px; font-size:14px; line-height:1.45; }
+  .me { align-self:flex-end; background:var(--ink); color:#fff; border-bottom-right-radius:6px; }
+  .me small { display:flex; align-items:center; gap:6px; color:#c9c3ba; font-size:11px; margin-bottom:5px; font-family:"JetBrains Mono"; }
+  .bot { background:#f4f2ee; color:var(--ink); border-bottom-left-radius:6px; }
+  .bot small { display:flex; align-items:center; gap:6px; color:var(--a); font-size:11px; margin-bottom:5px; font-family:"JetBrains Mono"; font-weight:500; }
+  .card { margin-top:10px; background:#fff; border:1px solid var(--line); border-radius:14px; padding:12px; }
+  .card .t { display:flex; gap:11px; align-items:center; }
+  .card .th { width:46px; height:46px; border-radius:11px; flex:none; }
+  .card b { font-size:14px; } .card p { color:var(--muted); font-size:12.5px; }
+  .card .ln { display:flex; justify-content:space-between; font-size:12.5px; color:var(--soft); margin-top:9px; padding-top:9px; border-top:1px dashed var(--line); }
+  .card .ln b { font-size:14px; }
+  .acts { display:flex; gap:8px; margin-top:11px; }
+  .acts span { flex:1; text-align:center; padding:10px; border-radius:12px; font-weight:600; font-size:13px; }
+  .acts .y { background:var(--brand); color:#fff; } .acts .n { border:1px solid var(--line); color:var(--soft); }
+  .listen { padding:16px 20px 22px; border-top:1px solid var(--line); text-align:center; background:#fff; }
+  .wave { height:46px; display:flex; align-items:center; justify-content:center; gap:4px; }
+  .wave i { width:4px; border-radius:99px; background:linear-gradient(180deg,var(--a),var(--brand)); display:block; }
+  .listen p { color:var(--muted); font-size:12.5px; margin:8px 0 14px; }
+  .listen p b { color:var(--ink); font-weight:600; }
+  .ctl { display:flex; align-items:center; justify-content:center; gap:22px; }
+  .ctl .s { width:44px; height:44px; border-radius:50%; border:1px solid var(--line); display:grid; place-items:center; color:var(--soft); }
+  .ctl .mic { width:70px; height:70px; border-radius:50%; background:linear-gradient(135deg,var(--a),var(--brand)); display:grid; place-items:center; color:#fff; box-shadow:0 0 0 8px rgba(225,29,72,.12),0 0 0 18px rgba(225,29,72,.06); }
+  .ctl svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; } .ctl .mic svg { width:28px; height:28px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><i>e</i>eTicket</div>
+  <nav><b>Concerts</b><span>Theatre</span><span>Sport</span><span>Festivals</span><span>Family</span></nav>
+  <div class="srch"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search an event, an artist, a venue</div>
+  <div class="a11y"><svg viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="1.8"/><path d="M5 8.5h14M12 8.5v6M8.5 21l3.5-6.5 3.5 6.5"/></svg>Accessibility</div>
+  <div class="cart">2</div>
+</header>
+
+<div class="page">
+  <h1>Concerts this week</h1>
+  <p class="sub">12 events in Tunis · tickets from 25 TND</p>
+  <div class="chips"><span class="on">All</span><span>Jazz</span><span>Classical</span><span>Rock</span><span>This weekend</span><span>Wheelchair access</span></div>
+  <div class="grid">
+    <div class="ev pick"><div class="art g1"><b><small>SAT</small>12</b><em>Selected by voice</em></div><div class="info"><h3>Jazz Night at the Opera</h3><p>Opera House · 8:00 pm · wheelchair access</p><div class="row"><b>35 TND <small>/ seat</small></b><span class="buy">2 seats · Row C</span></div></div></div>
+    <div class="ev"><div class="art g2"><b><small>SUN</small>13</b></div><div class="info"><h3>Andalusian Evening</h3><p>Municipal Theatre · 7:30 pm</p><div class="row"><b>40 TND <small>/ seat</small></b><span class="buy">Book</span></div></div></div>
+    <div class="ev"><div class="art g3"><b><small>FRI</small>18</b></div><div class="info"><h3>Symphony Orchestra</h3><p>City of Culture · 8:30 pm</p><div class="row"><b>50 TND <small>/ seat</small></b><span class="buy">Book</span></div></div></div>
+    <div class="ev"><div class="art g4"><b><small>SAT</small>19</b></div><div class="info"><h3>Indie Rock Showcase</h3><p>Le Plug · 9:00 pm</p><div class="row"><b>25 TND <small>/ seat</small></b><span class="buy">Book</span></div></div></div>
+  </div>
+</div>
+
+<div class="va">
+  <div class="vh">
+    <div class="ic"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
+    <div><b>Voice assistant</b><small>● Listening</small></div>
+    <div class="x"><span>EN</span><span>A+</span></div>
+  </div>
+  <div class="msgs">
+    <div class="m me"><small>◉ voice · 0:04</small>Two tickets for the jazz concert on Saturday, please.</div>
+    <div class="m bot"><small>✦ assistant · spoken aloud</small>I found Jazz Night at the Opera, Saturday at 8 pm. Two seats side by side in row C, with wheelchair access.
+      <div class="card">
+        <div class="t"><div class="th g1"></div><div><b>Jazz Night at the Opera</b><p>Sat 12 · 8:00 pm · Row C, seats 7-8</p></div></div>
+        <div class="ln"><span>2 × 35 TND</span><b>70 TND</b></div>
+      </div>
+      <div class="acts"><span class="y">Yes, book them</span><span class="n">Other seats</span></div>
+    </div>
+    <div class="m me"><small>◉ voice · 0:02</small>Yes, book them.</div>
+  </div>
+  <div class="listen">
+    <div class="wave" id="w"></div>
+    <p>Say <b>"confirm"</b> to pay, or <b>"read it again"</b></p>
+    <div class="ctl">
+      <span class="s"><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9a4 4 0 0 1 0 6"/></svg></span>
+      <span class="mic"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+      <span class="s"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M8 14h8"/></svg></span>
+    </div>
+  </div>
+</div>
+<script>
+  const hs = [10,18,28,14,36,22,42,30,16,38,24,44,20,32,12,40,26,34,18,28,12,22,36,16,30,20,10];
+  document.getElementById('w').innerHTML = hs.map((h) => `<i style="height:${h}px"></i>`).join('');
+</script>
+</body>
+</html>

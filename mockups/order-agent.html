@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Food ordering agent · interface</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#f5f6f4; --panel:#fff; --line:#e4e7e2; --ink:#12160f; --soft:#3c4338; --muted:#7b8376; --brand:#ea580c; --brand-bg:#fff7ed; --ok:#16a34a; --ok-bg:#f0fdf4; --run:#2563eb; --run-bg:#eff6ff; --ai:#7c3aed; --ai-bg:#f5f3ff; }
+  * { box-sizing:border-box; margin:0; }
+  body { width:1440px; height:900px; overflow:hidden; background:var(--bg); color:var(--ink); font:13.5px/1.45 Inter,system-ui,sans-serif; -webkit-font-smoothing:antialiased; display:grid; grid-template-columns:440px 1fr; }
+  .mono { font-family:"JetBrains Mono",monospace; }
+
+  /* left: the customer conversation */
+  .chat { background:linear-gradient(180deg,#1b2116,#0e120b); padding:34px 0 0; display:flex; justify-content:center; position:relative; }
+  .phone { width:344px; height:840px; background:#fff; border-radius:42px 42px 0 0; border:9px solid #0a0d08; border-bottom:0; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 30px 80px rgba(0,0,0,.5); }
+  .ph { padding:20px 18px 14px; display:flex; align-items:center; gap:11px; border-bottom:1px solid var(--line); }
+  .ph i { width:40px; height:40px; border-radius:13px; background:linear-gradient(135deg,#fb923c,#ea580c); display:grid; place-items:center; color:#fff; font:800 15px Inter; font-style:normal; }
+  .ph b { display:block; font-size:15px; } .ph small { color:var(--ok); font-size:12px; font-weight:500; }
+  .ms { flex:1; padding:16px 14px; display:flex; flex-direction:column; gap:10px; background:#fafbf9; }
+  .b { max-width:84%; padding:10px 13px; border-radius:17px; font-size:13.5px; line-height:1.42; }
+  .u { align-self:flex-end; background:var(--ink); color:#fff; border-bottom-right-radius:5px; }
+  .a { background:#fff; border:1px solid var(--line); border-bottom-left-radius:5px; }
+  .fn { align-self:flex-start; font:500 10.5px "JetBrains Mono"; color:var(--ai); background:var(--ai-bg); border:1px solid #ddd6fe; padding:5px 9px; border-radius:8px; display:flex; gap:6px; align-items:center; }
+  .fn u { text-decoration:none; color:#a78bfa; }
+  .sum { margin-top:8px; border-top:1px dashed var(--line); padding-top:8px; }
+  .sum div { display:flex; justify-content:space-between; font-size:12.5px; color:var(--soft); padding:1.5px 0; }
+  .sum .tot { font-weight:700; color:var(--ink); font-size:13.5px; margin-top:4px; }
+  .inp { padding:12px 14px 18px; border-top:1px solid var(--line); display:flex; gap:9px; align-items:center; }
+  .inp span { flex:1; height:42px; border-radius:999px; background:#f1f3ef; display:flex; align-items:center; padding:0 16px; color:var(--muted); }
+  .inp i { width:42px; height:42px; border-radius:50%; background:var(--brand); display:grid; place-items:center; color:#fff; font-style:normal; }
+  .lab { position:absolute; left:24px; top:14px; font:500 10.5px "JetBrains Mono"; letter-spacing:.14em; text-transform:uppercase; color:#8b9485; }
+
+  /* right: the restaurant side */
+  .rest { padding:22px 28px; overflow:hidden; }
+  .rh { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+  .rh h1 { font-size:22px; letter-spacing:-.03em; font-weight:800; }
+  .rh small { color:var(--muted); font-size:13px; display:block; font-weight:500; }
+  .live { margin-left:auto; display:flex; align-items:center; gap:8px; padding:7px 13px; border-radius:999px; background:var(--ok-bg); color:var(--ok); font-weight:600; font-size:12.5px; }
+  .live i { width:8px; height:8px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 4px rgba(22,163,74,.2); }
+  .ava { width:36px; height:36px; border-radius:50%; background:var(--ink); color:#fff; display:grid; place-items:center; font-weight:600; font-size:12px; }
+  .kp { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:18px; }
+  .kp div { background:#fff; border:1px solid var(--line); border-radius:14px; padding:13px 15px; }
+  .kp span { color:var(--muted); font-size:12px; font-weight:500; } .kp b { display:block; font-size:24px; letter-spacing:-.03em; margin-top:2px; }
+  .kp em { font-style:normal; font:500 11px "JetBrains Mono"; color:var(--ok); margin-left:6px; }
+  .board { display:grid; grid-template-columns:1.15fr 1fr 1fr; gap:14px; }
+  .col h4 { font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:600; display:flex; justify-content:space-between; margin-bottom:10px; }
+  .col h4 b { color:var(--ink); font:600 11px "JetBrains Mono"; background:#fff; border:1px solid var(--line); border-radius:999px; padding:1px 8px; }
+  .o { background:#fff; border:1px solid var(--line); border-radius:15px; padding:13px 14px; margin-bottom:10px; }
+  .o.new { border:2px solid var(--brand); box-shadow:0 16px 40px rgba(234,88,12,.16); background:linear-gradient(180deg,var(--brand-bg),#fff 55%); }
+  .o .t { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+  .o .t b { font:600 13px "JetBrains Mono"; } .o .t small { color:var(--muted); font-size:11.5px; }
+  .it { display:flex; justify-content:space-between; color:var(--soft); font-size:12.5px; padding:2px 0; }
+  .it b { font-weight:600; color:var(--ink); margin-right:7px; }
+  .note { margin-top:8px; background:#fffbeb; border:1px solid #fde68a; color:#92400e; border-radius:9px; padding:6px 9px; font-size:11.5px; }
+  .f { display:flex; align-items:center; justify-content:space-between; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); }
+  .f b { font-size:14px; }
+  .tag { font:500 10.5px "JetBrains Mono"; padding:3px 8px; border-radius:999px; }
+  .t-ai { background:var(--ai-bg); color:var(--ai); } .t-run { background:var(--run-bg); color:var(--run); } .t-ok { background:var(--ok-bg); color:var(--ok); }
+  .btns { display:flex; gap:8px; margin-top:11px; }
+  .btns span { flex:1; text-align:center; padding:9px; border-radius:11px; font-weight:600; font-size:12.5px; }
+  .btns .y { background:var(--brand); color:#fff; } .btns .n { border:1px solid var(--line); color:var(--soft); background:#fff; }
+  .pr { height:5px; border-radius:99px; background:#dbeafe; margin-top:9px; overflow:hidden; } .pr i { display:block; height:100%; background:var(--run); border-radius:99px; }
+</style>
+</head>
+<body>
+<div class="chat">
+  <span class="lab">Customer conversation</span>
+  <div class="phone">
+    <div class="ph"><i>O</i><div><b>Order assistant</b><small>● Online · replies instantly</small></div></div>
+    <div class="ms">
+      <div class="b u">Hi, I'd like two chicken shawarma and one large fries. No onions in one of them.</div>
+      <div class="fn"><u>ƒ</u> search_menu("chicken shawarma, fries")</div>
+      <div class="b a">Got it. From <b>Dar El Shawarma</b>, 15 min from you: two chicken shawarma (one without onions) and a large fries. Anything to drink?</div>
+      <div class="b u">A bottle of water. Deliver to my office please.</div>
+      <div class="fn"><u>ƒ</u> create_order(restaurant, items, address)</div>
+      <div class="b a">Here is your order:
+        <div class="sum">
+          <div><span>2 × Chicken shawarma</span><span>18.000</span></div>
+          <div><span>1 × Large fries</span><span>5.500</span></div>
+          <div><span>1 × Water 0.5 L</span><span>1.200</span></div>
+          <div class="tot"><span>Total with delivery</span><span>27.700 TND</span></div>
+        </div>
+      </div>
+      <div class="b u">Perfect, confirm.</div>
+      <div class="fn"><u>ƒ</u> send_to_restaurant(order #A-2184)</div>
+      <div class="b a">Sent to the restaurant. They accepted it: ready in about 20 minutes.</div>
+    </div>
+    <div class="inp"><span>Write a message</span><i>➤</i></div>
+  </div>
+</div>
+
+<div class="rest">
+  <div class="rh"><div><h1>Dar El Shawarma</h1><small>Kitchen screen · Lac 2, Tunis</small></div><div class="live"><i></i>Receiving orders</div><div class="ava">DS</div></div>
+  <div class="kp">
+    <div><span>Orders today</span><b>86<em>+12%</em></b></div>
+    <div><span>From the AI agent</span><b>61</b></div>
+    <div><span>Average prep time</span><b>17 min</b></div>
+    <div><span>Revenue today</span><b>2,184 TND</b></div>
+  </div>
+  <div class="board">
+    <div class="col">
+      <h4>New <b>2</b></h4>
+      <div class="o new">
+        <div class="t"><b>#A-2184</b><span class="tag t-ai">✦ taken by AI agent</span></div>
+        <div class="it"><span><b>2 ×</b>Chicken shawarma</span><span>18.000</span></div>
+        <div class="it"><span><b>1 ×</b>Large fries</span><span>5.500</span></div>
+        <div class="it"><span><b>1 ×</b>Water 0.5 L</span><span>1.200</span></div>
+        <div class="note">One shawarma without onions</div>
+        <div class="f"><span>Delivery · Office, Lac 2</span><b>27.700 TND</b></div>
+        <div class="btns"><span class="y">Accept · 20 min</span><span class="n">Adjust time</span></div>
+      </div>
+      <div class="o">
+        <div class="t"><b>#A-2183</b><small>1 min ago</small></div>
+        <div class="it"><span><b>1 ×</b>Mixed grill plate</span><span>24.000</span></div>
+        <div class="it"><span><b>2 ×</b>Fresh lemonade</span><span>9.000</span></div>
+        <div class="f"><span>Pick-up · 13:15</span><b>33.000 TND</b></div>
+      </div>
+    </div>
+    <div class="col">
+      <h4>Preparing <b>3</b></h4>
+      <div class="o"><div class="t"><b>#A-2181</b><span class="tag t-run">8 min left</span></div><div class="it"><span><b>3 ×</b>Falafel wrap</span><span>16.500</span></div><div class="it"><span><b>1 ×</b>Hummus</span><span>6.000</span></div><div class="pr"><i style="width:62%"></i></div></div>
+      <div class="o"><div class="t"><b>#A-2180</b><span class="tag t-run">12 min left</span></div><div class="it"><span><b>2 ×</b>Chicken plate</span><span>30.000</span></div><div class="pr"><i style="width:40%"></i></div></div>
+      <div class="o"><div class="t"><b>#A-2179</b><span class="tag t-run">3 min left</span></div><div class="it"><span><b>1 ×</b>Family box</span><span>48.000</span></div><div class="pr"><i style="width:88%"></i></div></div>
+    </div>
+    <div class="col">
+      <h4>Ready <b>2</b></h4>
+      <div class="o"><div class="t"><b>#A-2178</b><span class="tag t-ok">Driver on site</span></div><div class="it"><span><b>2 ×</b>Beef shawarma</span><span>20.000</span></div><div class="f"><span>Delivery</span><b>24.500 TND</b></div></div>
+      <div class="o"><div class="t"><b>#A-2176</b><span class="tag t-ok">Waiting pick-up</span></div><div class="it"><span><b>1 ×</b>Kids menu</span><span>12.000</span></div><div class="f"><span>Pick-up</span><b>12.000 TND</b></div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

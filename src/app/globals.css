@@ -106,3 +106,132 @@ body {
 :root[data-theme="light"] .theme-moon {
   display: none;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Motion and interaction. Everything here is driven by data attributes that
+   components/Interactions.tsx reads once for the whole page.
+
+   `html.js` is set by an inline script before the first paint: without
+   JavaScript nothing is hidden, so the page stays readable.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Scroll reveal: [data-reveal] fades and rises when it enters the viewport.
+   `--d` staggers siblings. */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s);
+  will-change: opacity, transform;
+}
+html.js [data-reveal="left"] { transform: translate3d(-40px, 0, 0); }
+html.js [data-reveal="right"] { transform: translate3d(40px, 0, 0); }
+html.js [data-reveal="zoom"] { transform: scale(0.94); }
+html.js [data-reveal].in { opacity: 1; transform: none; }
+
+/* Scroll progress bar under the header. */
+.progress {
+  transform: scaleX(var(--progress, 0));
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+/* Cursor glow: a soft light that follows the pointer inside [data-spotlight]. */
+[data-spotlight] { position: relative; }
+[data-spotlight]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--spot, 0);
+  transition: opacity 0.4s;
+  background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%), var(--glow), transparent 60%);
+}
+
+/* Cards that light their border under the pointer. */
+.glow-card { position: relative; isolation: isolate; }
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: var(--spot, 0);
+  transition: opacity 0.35s;
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), var(--accent), transparent 70%);
+}
+.glow-card > .glow-inner { border-radius: inherit; background: var(--surface); height: 100%; }
+
+/* 3D tilt: [data-tilt] rotates toward the pointer. */
+[data-tilt] {
+  transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.25s ease-out;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Magnetic buttons drift toward the pointer. */
+[data-magnetic] { transform: translate(var(--tx, 0px), var(--ty, 0px)); transition: transform 0.25s ease-out; }
+
+/* Hero: diagonal slabs behind the content, in the spirit of a stage light. */
+.hero-slabs::before,
+.hero-slabs::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  width: 34%;
+  transform: skewX(-18deg);
+  pointer-events: none;
+}
+.hero-slabs::before { left: 46%; background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 7%, transparent), transparent 70%); }
+.hero-slabs::after { left: 70%; background: linear-gradient(180deg, color-mix(in srgb, var(--accent-2) 6%, transparent), transparent 75%); }
+
+/* Hexagon portrait. The photo is masked to a rounded hexagon; two outlines
+   sit around it, and bright segments travel along the outer one. */
+.hex-mask {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,6 88,28 88,72 50,94 12,72 12,28' fill='%23000' stroke='%23000' stroke-width='10' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,6 88,28 88,72 50,94 12,72 12,28' fill='%23000' stroke='%23000' stroke-width='10' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.hex-run { stroke-dasharray: 46 222; animation: hex-run 9s linear infinite; }
+.hex-run-2 { stroke-dasharray: 22 246; animation: hex-run 9s linear infinite; animation-delay: -4.5s; }
+@keyframes hex-run { to { stroke-dashoffset: -268; } }
+
+.float { animation: float 6s ease-in-out infinite; animation-delay: var(--fd, 0s); }
+@keyframes float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+
+/* Typed role: the caret. */
+.caret { display: inline-block; width: 3px; height: 0.95em; margin-left: 4px; translate: 0 0.12em; background: var(--accent); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Stack marquee: two copies of the list slide left forever, pausing on hover. */
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Project rows appear again when the filter changes. */
+.row-in { animation: row-in 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: var(--d, 0s); }
+@keyframes row-in { from { opacity: 0; transform: translateY(22px) scale(0.985); } }
+
+/* Experience timeline: the accent line grows with the scroll. */
+.timeline-fill { transform: scaleY(var(--fill, 0)); transform-origin: 50% 0; background: linear-gradient(180deg, var(--accent), var(--accent-2)); }
+
+/* Scroll hint in the hero. */
+.scroll-dot { animation: scroll-dot 1.8s ease-in-out infinite; }
+@keyframes scroll-dot { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(12px); opacity: 0; } 100% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal] { opacity: 1; transform: none; }
+  [data-tilt], [data-magnetic] { transform: none; }
+  .marquee-track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; }
+}
+
+/* A magnetic button keeps its colour transitions while it drifts. */
+[data-magnetic] { transition: transform 0.25s ease-out, filter 0.2s, color 0.2s, border-color 0.2s, background-color 0.2s; }
+
+/* Large outlined numerals beside each project. */
+.outline-num { color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--muted) 45%, transparent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-dup { display: none; }
+}

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Data migration platform · interface</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#f6f7fb; --panel:#fff; --line:#e6e8f0; --ink:#111827; --soft:#374151; --muted:#6b7280; --faint:#9ca3af; --brand:#4f46e5; --brand-bg:#eef2ff; --ok:#059669; --ok-bg:#ecfdf5; --warn:#d97706; --warn-bg:#fffbeb; --bad:#dc2626; --bad-bg:#fef2f2; --run:#0284c7; --run-bg:#f0f9ff; }
+  * { box-sizing:border-box; margin:0; }
+  body { width:1440px; height:900px; overflow:hidden; background:var(--bg); color:var(--ink); font:13px/1.45 Inter,system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  .mono { font-family:"JetBrains Mono",monospace; }
+  .app { display:grid; grid-template-columns:64px 250px 1fr 300px; grid-template-rows:56px 1fr 28px; height:900px; }
+  /* top bar */
+  .top { grid-column:1 / -1; background:var(--panel); border-bottom:1px solid var(--line); display:flex; align-items:center; padding:0 18px 0 0; }
+  .logo { width:64px; height:56px; display:grid; place-items:center; border-right:1px solid var(--line); }
+  .logo i { width:30px; height:30px; border-radius:9px; background:linear-gradient(135deg,#6366f1,#22d3ee); display:grid; place-items:center; color:#fff; font:700 13px "JetBrains Mono"; font-style:normal; }
+  .crumbs { padding-left:18px; display:flex; align-items:center; gap:8px; color:var(--muted); font-size:13px; }
+  .crumbs b { color:var(--ink); font-weight:600; } .crumbs .sep { color:var(--faint); }
+  .pill { font:500 11px "JetBrains Mono"; padding:3px 8px; border-radius:999px; background:var(--ok-bg); color:var(--ok); margin-left:6px; }
+  .top .sp { flex:1; }
+  .search { white-space:nowrap; width:260px; height:34px; border:1px solid var(--line); border-radius:9px; background:var(--bg); display:flex; align-items:center; padding:0 10px; gap:8px; color:var(--faint); font-size:12.5px; }
+  .search kbd { margin-left:auto; font:500 10px "JetBrains Mono"; border:1px solid var(--line); border-radius:5px; padding:1px 5px; background:#fff; }
+  .avatar { width:32px; height:32px; border-radius:50%; background:#111827; color:#fff; display:grid; place-items:center; font-weight:600; font-size:12px; margin-left:14px; }
+  /* rail */
+  .rail { background:var(--panel); border-right:1px solid var(--line); display:flex; flex-direction:column; align-items:center; padding-top:14px; gap:6px; }
+  .rail a { width:42px; height:42px; border-radius:11px; display:grid; place-items:center; color:var(--faint); }
+  .rail a.on { background:var(--brand-bg); color:var(--brand); }
+  .rail svg { width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  /* connections */
+  .side { background:var(--panel); border-right:1px solid var(--line); padding:16px 12px; overflow:hidden; }
+  .side h4 { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); font-weight:600; padding:0 6px 10px; display:flex; justify-content:space-between; }
+  .side h4 span { color:var(--brand); font-weight:600; letter-spacing:0; text-transform:none; }
+  .conn { display:flex; align-items:center; gap:8px; padding:7px 8px; border-radius:8px; font-weight:500; color:var(--soft); }
+  .conn .d { width:7px; height:7px; border-radius:50%; background:var(--ok); } .conn .d.off { background:var(--faint); }
+  .conn small { margin-left:auto; font:400 10.5px "JetBrains Mono"; color:var(--faint); }
+  .eng { width:20px; height:20px; border-radius:6px; display:grid; place-items:center; font:600 9px "JetBrains Mono"; color:#fff; }
+  .tree { margin:2px 0 6px 18px; border-left:1px solid var(--line); padding-left:10px; }
+  .tree div { display:flex; align-items:center; gap:7px; padding:5px 8px; border-radius:7px; color:var(--muted); font:400 12px "JetBrains Mono"; }
+  .tree div.on { background:var(--brand-bg); color:var(--brand); font-weight:500; }
+  .tree svg { width:13px; height:13px; fill:none; stroke:currentColor; stroke-width:1.6; }
+  .tree small { margin-left:auto; color:var(--faint); font-size:10.5px; }
+  /* main */
+  .main { display:grid; grid-template-rows:auto 1fr 290px; overflow:hidden; }
+  .tool { background:var(--panel); border-bottom:1px solid var(--line); padding:12px 18px; display:flex; align-items:center; gap:10px; }
+  .sel { height:36px; border:1px solid var(--line); border-radius:9px; padding:0 12px; display:flex; align-items:center; gap:8px; font-weight:500; background:#fff; }
+  .sel small { color:var(--faint); font:400 11px "JetBrains Mono"; }
+  .arrow { color:var(--faint); }
+  .btn { height:36px; border-radius:9px; padding:0 14px; display:flex; align-items:center; gap:7px; font-weight:600; font-size:12.5px; border:1px solid var(--line); background:#fff; color:var(--soft); }
+  .btn.run { background:var(--brand); border-color:var(--brand); color:#fff; box-shadow:0 4px 14px rgba(79,70,229,.35); }
+  .btn svg { width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  .tabs { display:flex; gap:2px; padding:0 14px; background:#fbfbfd; border-bottom:1px solid var(--line); }
+  .tabs span { padding:9px 12px; font:500 12px "JetBrains Mono"; color:var(--muted); border-bottom:2px solid transparent; display:flex; gap:7px; align-items:center; }
+  .tabs span.on { color:var(--ink); border-color:var(--brand); background:#fff; }
+  .tabs i { width:6px; height:6px; border-radius:50%; background:var(--warn); font-style:normal; }
+  .editor { background:#fff; display:grid; grid-template-columns:48px 1fr; font:400 13px/1.75 "JetBrains Mono"; overflow:hidden; }
+  .ln { text-align:right; padding:14px 12px 0 0; color:#c4c8d4; border-right:1px solid #f1f2f6; user-select:none; }
+  .code { padding:14px 18px 0; white-space:pre; color:#1f2937; }
+  .k { color:#4f46e5; font-weight:500; } .f { color:#0891b2; } .s { color:#059669; } .c { color:#9ca3af; font-style:italic; } .n { color:#d97706; }
+  .hl { background:#f5f3ff; display:block; margin:0 -18px; padding:0 18px; box-shadow:inset 3px 0 0 var(--brand); }
+  /* results */
+  .res { background:var(--panel); border-top:1px solid var(--line); display:grid; grid-template-rows:auto 1fr; overflow:hidden; }
+  .rtabs { display:flex; align-items:center; gap:4px; padding:8px 14px; border-bottom:1px solid var(--line); }
+  .rtabs span { padding:6px 11px; border-radius:7px; font-weight:500; font-size:12px; color:var(--muted); }
+  .rtabs span.on { background:var(--brand-bg); color:var(--brand); }
+  .rtabs .meta { margin-left:auto; font:400 11.5px "JetBrains Mono"; color:var(--muted); display:flex; gap:14px; align-items:center; }
+  .rtabs .meta b { color:var(--ok); font-weight:500; }
+  table { width:100%; border-collapse:collapse; font:400 12px "JetBrains Mono"; }
+  th { text-align:left; padding:8px 14px; color:var(--faint); font-weight:500; background:#fbfbfd; border-bottom:1px solid var(--line); font-size:11px; }
+  td { padding:8px 14px; border-bottom:1px solid #f1f2f6; color:var(--soft); }
+  td.num { text-align:right; } th.num { text-align:right; }
+  .tag { padding:2px 8px; border-radius:999px; font-size:10.5px; font-weight:500; }
+  .t-ok { background:var(--ok-bg); color:var(--ok); } .t-warn { background:var(--warn-bg); color:var(--warn); } .t-run { background:var(--run-bg); color:var(--run); } .t-bad { background:var(--bad-bg); color:var(--bad); }
+  /* jobs */
+  .jobs { background:var(--panel); border-left:1px solid var(--line); padding:16px 14px; overflow:hidden; }
+  .jobs h4 { font-size:13px; font-weight:600; display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+  .jobs h4 small { font:500 11px "JetBrains Mono"; color:var(--muted); font-weight:500; }
+  .kpis { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:14px; }
+  .kpis div { border:1px solid var(--line); border-radius:10px; padding:9px 10px; }
+  .kpis b { display:block; font-size:18px; letter-spacing:-.02em; } .kpis span { color:var(--muted); font-size:11px; }
+  .job { border:1px solid var(--line); border-radius:11px; padding:11px 12px; margin-bottom:8px; }
+  .job.live { border-color:#bae6fd; background:linear-gradient(180deg,#f0f9ff,#fff); }
+  .job .h { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+  .job b { font:600 12px "JetBrains Mono"; }
+  .job p { color:var(--muted); font-size:11.5px; display:flex; justify-content:space-between; }
+  .bar { height:5px; border-radius:999px; background:#e0f2fe; margin:8px 0 6px; overflow:hidden; } .bar i { display:block; height:100%; width:64%; background:linear-gradient(90deg,#0ea5e9,#6366f1); border-radius:999px; }
+  .lin { margin-top:14px; border-top:1px solid var(--line); padding-top:14px; }
+  .lin .flow { display:flex; align-items:center; gap:4px; margin-top:10px; font:500 9.5px "JetBrains Mono"; }
+  .lin .node { padding:6px 6px; border-radius:8px; border:1px solid var(--line); background:#fff; color:var(--soft); }
+  .lin .node.t { border-color:#c7d2fe; background:var(--brand-bg); color:var(--brand); }
+  .lin .ar { color:var(--faint); }
+  /* status */
+  .status { grid-column:1 / -1; background:#111827; color:#9ca3af; font:400 11px "JetBrains Mono"; display:flex; align-items:center; gap:18px; padding:0 14px; }
+  .status b { color:#34d399; font-weight:500; } .status .r { margin-left:auto; display:flex; gap:18px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="logo"><i>DP</i></div>
+    <div class="crumbs">Workspace <span class="sep">/</span> Scheduler <span class="sep">/</span> <b>orders_daily_sync.sql</b><span class="pill">saved</span></div>
+    <span class="sp"></span>
+    <div class="search"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search tables, jobs<kbd>Ctrl&nbsp;K</kbd></div>
+    <div class="avatar">HW</div>
+  </div>
+
+  <div class="rail">
+    <a><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></a>
+    <a><svg viewBox="0 0 24 24"><path d="M4 8h14M14 4l4 4-4 4M20 16H6M10 12l-4 4 4 4"/></svg></a>
+    <a class="on"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 15l3 2 5-4"/></svg></a>
+    <a><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg></a>
+    <a><svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="18" r="2"/><path d="M7 6h4a4 4 0 0 1 4 4v0a2 2 0 0 0 2 2M7 18h4a4 4 0 0 0 4-4"/></svg></a>
+  </div>
+
+  <div class="side">
+    <h4>Connections <span>+ New</span></h4>
+    <div class="conn"><span class="d"></span><span class="eng" style="background:#f59e0b">My</span>mysql-prod<small>9 db</small></div>
+    <div class="tree">
+      <div><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"/></svg>classicmodels</div>
+      <div class="on"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"/></svg>sales<small>14 tbl</small></div>
+      <div><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"/></svg>library_system</div>
+      <div><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"/></svg>inventory</div>
+    </div>
+    <div class="conn"><span class="d"></span><span class="eng" style="background:#3b82f6">Pg</span>postgres-core<small>4 db</small></div>
+    <div class="conn"><span class="d"></span><span class="eng" style="background:#06b6d4">Sf</span>snowflake-dwh<small>3 db</small></div>
+    <div class="tree">
+      <div><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"/></svg>ANALYTICS<small>target</small></div>
+    </div>
+    <div class="conn"><span class="d"></span><span class="eng" style="background:#ef4444">Or</span>oracle-erp<small>2 db</small></div>
+    <div class="conn"><span class="d off"></span><span class="eng" style="background:#8b5cf6">Ms</span>sqlserver-legacy<small>offline</small></div>
+
+    <h4 style="margin-top:18px">Integration patterns</h4>
+    <div class="tree" style="margin-left:6px;border:0;padding:0">
+      <div>Full load</div><div class="on">Incremental (CDC)</div><div>Slowly changing dim.</div><div>Upsert / merge</div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div>
+      <div class="tool">
+        <div class="sel"><span class="eng" style="background:#f59e0b">My</span>mysql-prod <small>· sales</small></div>
+        <span class="arrow">→</span>
+        <div class="sel"><span class="eng" style="background:#06b6d4">Sf</span>snowflake-dwh <small>· ANALYTICS</small></div>
+        <span style="flex:1"></span>
+        <div class="btn"><svg viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></svg>Compile</div>
+        <div class="btn run"><svg viewBox="0 0 24 24"><path d="M7 5v14l11-7z" fill="currentColor"/></svg>Run</div>
+        <div class="btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Schedule</div>
+      </div>
+      <div class="tabs"><span class="on">orders_daily_sync.sql</span><span>customers_scd2.sql<i></i></span><span>stock_snapshot.sql</span></div>
+    </div>
+
+    <div class="editor">
+      <div class="ln">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13</div>
+      <div class="code"><span class="c">-- Incremental load of orders, generated from the "Incremental (CDC)" pattern</span>
+<span class="k">MERGE INTO</span> ANALYTICS.FACT_ORDERS <span class="k">AS</span> t
+<span class="k">USING</span> (
+<span class="hl">  <span class="k">SELECT</span> o.order_id, o.customer_id, o.order_date, o.status,</span>         <span class="f">SUM</span>(d.quantity * d.unit_price) <span class="k">AS</span> amount
+    <span class="k">FROM</span> sales.orders o
+    <span class="k">JOIN</span> sales.order_details d <span class="k">ON</span> d.order_id = o.order_id
+   <span class="k">WHERE</span> o.updated_at &gt; <span class="s">'{{ last_run_at }}'</span>
+   <span class="k">GROUP BY</span> <span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>
+) <span class="k">AS</span> s <span class="k">ON</span> t.order_id = s.order_id
+<span class="k">WHEN MATCHED THEN UPDATE SET</span> t.status = s.status, t.amount = s.amount
+<span class="k">WHEN NOT MATCHED THEN INSERT</span> (order_id, customer_id, order_date, status, amount)
+     <span class="k">VALUES</span> (s.order_id, s.customer_id, s.order_date, s.status, s.amount);</div>
+    </div>
+
+    <div class="res">
+      <div class="rtabs"><span>Terminal</span><span class="on">Results</span><span>Lineage</span><span>History</span>
+        <div class="meta"><b>● syntax ok</b><span>1,284 rows merged</span><span>2.41 s</span></div></div>
+      <table>
+        <tr><th>order_id</th><th>customer_id</th><th>order_date</th><th>status</th><th class="num">amount</th><th>action</th></tr>
+        <tr><td>10425</td><td>C-0119</td><td>2024-08-29</td><td><span class="tag t-ok">Shipped</span></td><td class="num">41,623.44</td><td>update</td></tr>
+        <tr><td>10426</td><td>C-0173</td><td>2024-08-29</td><td><span class="tag t-run">In process</span></td><td class="num">32,077.44</td><td>insert</td></tr>
+        <tr><td>10427</td><td>C-0204</td><td>2024-08-30</td><td><span class="tag t-run">In process</span></td><td class="num">18,442.10</td><td>insert</td></tr>
+        <tr><td>10428</td><td>C-0098</td><td>2024-08-30</td><td><span class="tag t-warn">On hold</span></td><td class="num">9,310.00</td><td>insert</td></tr>
+        <tr><td>10429</td><td>C-0141</td><td>2024-08-30</td><td><span class="tag t-ok">Shipped</span></td><td class="num">27,905.82</td><td>update</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="jobs">
+    <h4>Jobs <small>today</small></h4>
+    <div class="kpis"><div><b>24</b><span>runs</span></div><div><b style="color:var(--ok)">22</b><span>succeeded</span></div><div><b style="color:var(--bad)">1</b><span>failed</span></div></div>
+    <div class="job live"><div class="h"><b>orders_daily_sync</b><span class="tag t-run">Running</span></div><div class="bar"><i></i></div><p><span>mysql → snowflake</span><span>64%</span></p></div>
+    <div class="job"><div class="h"><b>customers_scd2</b><span class="tag t-ok">Succeeded</span></div><p><span>every day · 02:00</span><span>38 s</span></p></div>
+    <div class="job"><div class="h"><b>stock_snapshot</b><span class="tag t-ok">Succeeded</span></div><p><span>every hour</span><span>12 s</span></p></div>
+    <div class="job"><div class="h"><b>erp_invoices_full</b><span class="tag t-bad">Failed</span></div><p><span>oracle → postgres</span><span>retry 2/3</span></p></div>
+    <div class="job"><div class="h"><b>hr_employees_upsert</b><span class="tag t-warn">Scheduled</span></div><p><span>next run · 18:00</span><span>cron</span></p></div>
+    <div class="lin">
+      <h4 style="margin:0">Lineage <small>FACT_ORDERS</small></h4>
+      <div class="flow"><span class="node">orders</span><span class="ar">→</span><span class="node">order_details</span><span class="ar">→</span><span class="node t">FACT_ORDERS</span></div>
+    </div>
+  </div>
+
+  <div class="status"><span><b>●</b> connected · 4 of 5 sources</span><span>UTF-8</span><span>Ln 4, Col 12</span><div class="r"><span>pattern: incremental (CDC)</span><span>next run in 14 min</span></div></div>
+</div>
+</body>
+</html>
