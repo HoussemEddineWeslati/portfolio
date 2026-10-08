@@ -116,7 +116,7 @@ export const en = {
           "The restaurant receives a structured order, ready to prepare.",
         ],
         tags: ["Python", "OpenAI", "ElevenLabs", "Function calling", "MongoDB"],
-        image: "/work/mock/order-agent.jpg",
+        image: "/work/mock/voice-order-agent.jpg",
         alt: "A customer speaking with the voice ordering agent, next to the restaurant's order screen",
         address: "https://orders.example",
         real: false,

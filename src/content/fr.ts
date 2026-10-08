@@ -117,7 +117,7 @@ export const fr: Dict = {
           "Le restaurant reçoit une commande structurée, prête à préparer.",
         ],
         tags: ["Python", "OpenAI", "ElevenLabs", "Function calling", "MongoDB"],
-        image: "/work/mock/order-agent.jpg",
+        image: "/work/mock/voice-order-agent.jpg",
         alt: "Un client qui parle avec l'agent vocal de commande, à côté de l'écran du restaurant",
         address: "https://orders.example",
         real: false,

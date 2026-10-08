@@ -17,7 +17,7 @@ const themeScript = `document.documentElement.classList.add("js");try{var t=loca
 
 export function Shell({ lang, children }: { lang: Lang; children: React.ReactNode }) {
   return (
-    <html lang={lang} className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning>
+    <html lang={lang} data-scroll-behavior="smooth" className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning>
       <body className="min-h-dvh">
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         {children}

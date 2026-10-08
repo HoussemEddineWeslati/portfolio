@@ -19,10 +19,22 @@
 // filtered project rows) need no registration. Everything is skipped for
 // visitors who ask for reduced motion, and on touch screens for the pointer
 // effects.
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export function Interactions() {
+  const anchor = useRef<HTMLSpanElement>(null);
+
   useEffect(() => {
+    /* The page this instance belongs to. The router keeps the page you just
+       left in the document, hidden, so that going back is instant: a search
+       of the whole document would also find ITS menu and ITS sections, and a
+       hidden section measures as "at the top", which marked the last menu
+       link as current on every other page. Everything is therefore looked up
+       from this page's own header, and a section only counts when it is
+       actually rendered. */
+    const header = anchor.current?.closest("header") ?? document.body;
+    const rendered = (el: Element) => el.getClientRects().length > 0;
+
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     const cleanups: Array<() => void> = [];
@@ -61,8 +73,8 @@ export function Interactions() {
     cleanups.push(() => io.disconnect());
 
     // ── Scroll: progress bar, current menu link, timeline fill ───────────
-    const progress = document.querySelector<HTMLElement>("[data-progress]");
-    const navLinks = [...document.querySelectorAll<HTMLElement>("[data-nav]")];
+    const progress = header.querySelector<HTMLElement>("[data-progress]");
+    const navLinks = [...header.querySelectorAll<HTMLElement>("[data-nav]")];
     const sections = navLinks
       .map((l) => document.querySelector<HTMLElement>(l.dataset.nav ?? ""))
       .filter((s): s is HTMLElement => !!s);
@@ -79,13 +91,14 @@ export function Interactions() {
 
         const line = window.innerHeight * 0.35;
         let current = "";
-        for (const s of sections) if (s.getBoundingClientRect().top <= line) current = `#${s.id}`;
+        for (const s of sections) if (rendered(s) && s.getBoundingClientRect().top <= line) current = `#${s.id}`;
         for (const l of navLinks) {
           if (l.dataset.nav === current) l.setAttribute("aria-current", "true");
           else l.removeAttribute("aria-current");
         }
 
         for (const t of timelines) {
+          if (!rendered(t)) continue;
           const r = t.getBoundingClientRect();
           const fill = (window.innerHeight * 0.6 - r.top) / r.height;
           t.style.setProperty("--fill", String(Math.max(0, Math.min(1, fill))));
@@ -180,5 +193,5 @@ export function Interactions() {
     return () => cleanups.forEach((fn) => fn());
   }, []);
 
-  return null;
+  return <span ref={anchor} hidden />;
 }
