@@ -168,6 +168,11 @@ export const fr: Dict = {
   },
   testudo: {
     back: "Toutes les réalisations",
+    visit: "Voir testudo-pro.com",
+    dashboardAlt: "Tableau de bord Testudo : indicateurs qualité et mesures en attente",
+    mapAlt: "Cartographie des processus Testudo : processus de management, de réalisation et de support",
+    screensTitle: "Le produit",
+    screensNote: "Deux écrans d'un espace de démonstration : le tableau de bord et la cartographie des processus, point de départ de chaque entreprise.",
     kicker: "Étude de cas · SaaS multi-tenant · En production",
     title: "Testudo",
     lead: "Une plateforme de management de la qualité ISO 9001, construite du premier écran à la production.",

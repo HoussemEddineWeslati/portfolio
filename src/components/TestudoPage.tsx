@@ -3,7 +3,8 @@ import type { Dict } from "@/content/en";
 import { paths, site, type Lang } from "@/content/site";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { ArrowLeftIcon, LinkedinIcon, MailIcon } from "./icons";
+import { BrowserFrame } from "./BrowserFrame";
+import { ArrowLeftIcon, ArrowRightIcon, LinkedinIcon, MailIcon } from "./icons";
 import { ButtonLink, Container, Tag } from "./ui";
 
 function Block({ title, children }: { title: string; children: React.ReactNode }) {
@@ -50,6 +51,14 @@ export function TestudoPage({ t, lang }: { t: Dict; lang: Lang }) {
             <p className="mb-3 font-mono text-xs font-medium uppercase tracking-[0.16em] text-accent">{c.kicker}</p>
             <h1 className="text-4xl font-semibold tracking-tight text-ink sm:text-6xl">{c.title}</h1>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">{c.lead}</p>
+            <a
+              href={site.testudoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-opacity hover:opacity-80"
+            >
+              {c.visit} <ArrowRightIcon className="h-4 w-4" />
+            </a>
 
             <dl className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-4">
               {c.facts.map((f) => (
@@ -63,6 +72,14 @@ export function TestudoPage({ t, lang }: { t: Dict; lang: Lang }) {
         </div>
 
         <Container>
+          <Block title={c.screensTitle}>
+            <p className="mb-7 max-w-3xl text-base leading-relaxed text-soft">{c.screensNote}</p>
+            <div className="grid gap-5 md:grid-cols-2">
+              <BrowserFrame src="/work/testudo/dashboard.jpg" alt={c.dashboardAlt} address={site.testudoAddress} priority />
+              <BrowserFrame src="/work/testudo/cartography.jpg" alt={c.mapAlt} address={site.testudoAddress} />
+            </div>
+          </Block>
+
           <Block title={s.problem.title}>
             <div className="max-w-3xl space-y-4 text-base leading-relaxed text-soft">
               {s.problem.text.map((p) => <p key={p}>{p}</p>)}

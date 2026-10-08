@@ -4,7 +4,8 @@ import type { Dict } from "@/content/en";
 import { paths, site, stack, type Lang } from "@/content/site";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { AppPreview } from "./AppPreview";
+import { BrowserFrame } from "./BrowserFrame";
+import { ProjectArt } from "./ProjectArt";
 import { ArrowRightIcon, DatabaseIcon, LayersIcon, LinkedinIcon, MailIcon, SparkIcon, GithubIcon } from "./icons";
 import { ButtonLink, Container, Section, SectionHeading, Tag } from "./ui";
 
@@ -124,7 +125,7 @@ export function HomePage({ t, lang }: { t: Dict; lang: Lang }) {
               </span>
             </div>
             <div className="hero-backdrop flex items-center border-t border-line bg-surface-2 p-6 sm:p-9 lg:border-l lg:border-t-0">
-              <AppPreview />
+              <BrowserFrame src="/work/testudo/dashboard.jpg" alt={t.testudo.dashboardAlt} address={site.testudoAddress} />
             </div>
           </Link>
 
@@ -133,13 +134,16 @@ export function HomePage({ t, lang }: { t: Dict; lang: Lang }) {
               <article
                 key={p.id}
                 /* Five cards on a six-column grid: three on the first row, two wider on the second. */
-                className={`flex flex-col rounded-2xl border border-line bg-surface p-6 ${i < 3 ? "lg:col-span-2" : "lg:col-span-3"}`}
+                className={`flex flex-col overflow-hidden rounded-2xl border border-line bg-surface ${i < 3 ? "lg:col-span-2" : "lg:col-span-3"}`}
               >
-                <p className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-accent">{p.kicker}</p>
-                <h3 className="text-lg font-semibold text-ink">{p.title}</h3>
-                <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted">{p.text}</p>
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                  {p.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+                <ProjectArt id={p.id} />
+                <div className="flex flex-1 flex-col p-6">
+                  <p className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-accent">{p.kicker}</p>
+                  <h3 className="text-lg font-semibold text-ink">{p.title}</h3>
+                  <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted">{p.text}</p>
+                  <div className="mt-5 flex flex-wrap gap-1.5">
+                    {p.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+                  </div>
                 </div>
               </article>
             ))}
