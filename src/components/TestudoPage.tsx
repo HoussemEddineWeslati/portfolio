@@ -4,6 +4,7 @@ import { paths, site, type Lang } from "@/content/site";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { BrowserFrame } from "./BrowserFrame";
+import { OtherCases } from "./CaseStudyPage";
 import { ArrowLeftIcon, ArrowRightIcon, LinkedinIcon, MailIcon } from "./icons";
 import { ButtonLink, Container, Tag } from "./ui";
 
@@ -150,7 +151,9 @@ export function TestudoPage({ t, lang }: { t: Dict; lang: Lang }) {
           </Block>
         </Container>
 
-        <Container className="pb-20 pt-4">
+        <OtherCases t={t} lang={lang} current="testudo" />
+
+        <Container className="pb-20 pt-10">
           <div className="hero-backdrop rounded-3xl border border-line bg-surface px-6 py-12 text-center sm:px-12">
             <h2 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">{c.cta.title}</h2>
             <p className="mx-auto mt-3 max-w-xl text-base text-muted">{c.cta.text}</p>

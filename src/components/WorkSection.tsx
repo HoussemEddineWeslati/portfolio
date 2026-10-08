@@ -65,7 +65,7 @@ export function WorkSection({ work, lang }: { work: Work; lang: Lang }) {
         {work.projects.map((p) => {
           const index = shown.indexOf(p.id);
           const flip = index % 2 === 1;
-          const href = p.href === "testudo" ? paths.testudo[lang] : "";
+          const href = p.href in paths ? paths[p.href as keyof typeof paths][lang] : "";
           const frame = (
             <BrowserFrame src={p.image} alt={p.alt} address={p.address} ratio="aspect-[16/10]" />
           );

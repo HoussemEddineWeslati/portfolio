@@ -65,6 +65,7 @@ export const en = {
     note: "This work belongs to the companies I built it for, so the code is private. Here is what each product is and what I did.",
     filters: { all: "All", fullstack: "Full stack", ai: "AI", data: "Data" },
     readCase: "Read the case study",
+    otherCases: "Other case studies",
     did: "What I did",
     concept: "Interface redesigned for this portfolio",
     projects: [
@@ -91,7 +92,7 @@ export const en = {
         cats: ["ai"],
         kicker: "AI chatbot · Voice · Accessibility",
         title: "Voice assistant for a ticketing site",
-        text: "A voice-enabled chatbot on an e-ticketing website, so that people with disabilities can find an event and buy tickets by speaking.",
+        text: "A voice-enabled chatbot on an e-ticketing website, so that people with disabilities can find an event and buy tickets by speaking, in English and German.",
         points: [
           "Speech in and speech out with OpenAI models and ElevenLabs.",
           "Answers from the site's own event data through retrieval (RAG) over a vector store.",
@@ -102,14 +103,14 @@ export const en = {
         alt: "A ticketing website with the voice assistant open, confirming two seats",
         address: "https://eticket.example",
         real: false,
-        href: "",
+        href: "voice",
       },
       {
         id: "agent",
         cats: ["ai"],
         kicker: "Voice AI agent · Function calling",
         title: "Voice agent for food ordering",
-        text: "A voice agent that talks with customers out loud, takes their orders and passes them to the restaurants.",
+        text: "A voice agent that answers the phone for a food ordering app, takes the order in natural conversation and passes it to the restaurant.",
         points: [
           "Understands a spoken order, asks for what is missing and answers in a natural voice with ElevenLabs.",
           "Calls functions to search the menu, build the order and send it.",
@@ -120,7 +121,7 @@ export const en = {
         alt: "A customer speaking with the voice ordering agent, next to the restaurant's order screen",
         address: "https://orders.example",
         real: false,
-        href: "",
+        href: "agent",
       },
       {
         id: "platform",
@@ -138,7 +139,7 @@ export const en = {
         alt: "A data platform: saved connections, a SQL workspace, results and scheduled jobs",
         address: "https://platform.example",
         real: false,
-        href: "",
+        href: "platform",
       },
     ],
     moreTitle: "More work",

@@ -17,6 +17,9 @@ export type Lang = "en" | "fr";
 export const paths = {
   home: { en: "/", fr: "/fr" },
   testudo: { en: "/work/testudo", fr: "/fr/work/testudo" },
+  voice: { en: "/work/voice-assistant", fr: "/fr/work/voice-assistant" },
+  agent: { en: "/work/voice-ordering-agent", fr: "/fr/work/voice-ordering-agent" },
+  platform: { en: "/work/data-migration-platform", fr: "/fr/work/data-migration-platform" },
 } as const;
 
 export const stack = [
