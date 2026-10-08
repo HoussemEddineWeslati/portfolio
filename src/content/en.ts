@@ -76,8 +76,8 @@ export const en = {
         title: "Testudo",
         text: "An ISO 9001 quality management platform: documents, audits, non-conformities, action plans, risks and indicators in one place.",
         points: [
-          "Built the whole product alone, from the first screen to production: 12 modules, one database per customer.",
-          "Granular access control, real-time updates, PDF and Excel reporting in French and English.",
+          "Built the whole product alone, from the first screen to production: 12 modules, multi-tenant with isolated data per customer.",
+          "Role-based access down to the record, real-time updates over WebSockets, PDF and Excel reporting in French and English.",
           "Built its AI assistant, QualiBot, with a colleague: retrieval over ISO 9001 knowledge and company documents.",
         ],
         tags: ["React 19", "NestJS", "TypeScript", "PostgreSQL", "WebSockets", "Docker"],
@@ -180,7 +180,7 @@ export const en = {
         company: "Maxula Consulting",
         place: "Tunis, Tunisia · Hybrid",
         dates: "Apr 2026 - Present",
-        text: "Sole developer of Testudo: interface design, React front end, NestJS API, one PostgreSQL database per tenant, AI assistant, Docker and the production server.",
+        text: "Sole developer of Testudo: interface design, React front end, NestJS API, multi-tenant PostgreSQL, AI assistant, Docker and the production server.",
       },
       {
         role: "Data Engineer",
@@ -269,12 +269,12 @@ export const en = {
             text: "Documents, audits, non-conformities, action plans, risks and opportunities, indicators, training, suppliers, customers and surveys, context, equipment checks and records. Any record can be linked to any other, and each link reads in both directions.",
           },
           {
-            title: "One database per customer",
-            text: "Each company gets its own PostgreSQL database, created and migrated automatically. One customer's data can never appear in another's query.",
+            title: "Multi-tenant with isolated data",
+            text: "One platform serves many companies, with each company's data isolated at the database level. A new customer workspace is provisioned and kept up to date automatically.",
           },
           {
-            title: "Access control you can explain",
-            text: "Rights per employee and per section, responsibility matrices per process, and record-level rules: without the right to consult a module, you see only the records you are named on. Everything is enforced on the server.",
+            title: "Role-based access, down to the record",
+            text: "Permissions per person and per module, combined with responsibility matrices, decide who can see and do what, down to a single record. Every rule is enforced by the API, not only hidden in the interface.",
           },
           {
             title: "Real time by default",
@@ -282,24 +282,24 @@ export const en = {
           },
           {
             title: "Reporting in two languages",
-            text: "A PDF sheet for every record, Excel exports for every list, thirteen performance reports and management review decks in PDF and PowerPoint, all in French or English.",
+            text: "Generated PDF sheets, Excel exports, performance reports with charts, and management review decks in PDF and PowerPoint, all in French or English.",
           },
           {
             title: "An assistant that acts",
-            text: "QualiBot answers from ISO 9001 knowledge and the company's own documents, and can open a document or take the user to the right screen.",
+            text: "QualiBot uses retrieval (RAG) to answer from ISO 9001 knowledge and the company's own documents, and can act in the product, for example by taking the user to the right screen.",
           },
         ],
       },
       architecture: {
         title: "Architecture",
-        text: "A React application talks to a NestJS API behind a reverse proxy. The API reaches one PostgreSQL database per customer, object storage for files, and a separate Python service for AI. Everything runs in Docker on a server I set up and maintain.",
+        text: "A React application talks to a NestJS API behind a reverse proxy. The API works with PostgreSQL, object storage for files and a separate Python service for AI. Everything runs in Docker on a server I set up and maintain.",
         nodes: {
           browser: { title: "Browser", text: "React 19 · TypeScript · React Query · Tailwind CSS" },
-          proxy: { title: "Reverse proxy", text: "Traefik · HTTPS · one subdomain per customer" },
+          proxy: { title: "Reverse proxy", text: "Traefik · HTTPS" },
           api: { title: "API", text: "NestJS · TypeORM · REST + WebSockets" },
-          db: { title: "Databases", text: "PostgreSQL · one database per customer" },
-          files: { title: "Files", text: "S3-compatible object storage · PDF conversion" },
-          ai: { title: "AI service", text: "Python · FastAPI · RAG · Mistral" },
+          db: { title: "Database", text: "PostgreSQL · data isolated per customer" },
+          files: { title: "Files", text: "Object storage · PDF generation" },
+          ai: { title: "AI service", text: "Python · FastAPI · RAG · LLM" },
         },
       },
       quality: {
@@ -310,7 +310,7 @@ export const en = {
           { value: "2", label: "languages across screens, PDFs and exports" },
           { value: "12", label: "modules sharing one design system" },
         ],
-        text: "Beyond unit tests, guard tests read the source code and fail the build when a rule is broken, for example a new screen that skips the access check. Browser scripts replay real user journeys before each release.",
+        text: "Beyond unit tests, guard tests read the source code and fail the build when a project rule is broken, so a mistake is caught before it ships. Browser scripts replay real user journeys before each release.",
       },
       stack: {
         title: "Stack",

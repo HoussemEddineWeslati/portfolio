@@ -77,8 +77,8 @@ export const fr: Dict = {
         title: "Testudo",
         text: "Une plateforme de management de la qualité ISO 9001 : documents, audits, non-conformités, plans d'action, risques et indicateurs au même endroit.",
         points: [
-          "Tout le produit construit seul, du premier écran à la production : 12 modules, une base de données par client.",
-          "Contrôle d'accès fin, temps réel, rapports PDF et Excel en français et en anglais.",
+          "Tout le produit construit seul, du premier écran à la production : 12 modules, multi-tenant avec des données isolées par client.",
+          "Droits par rôle jusqu'à la fiche, temps réel par WebSockets, rapports PDF et Excel en français et en anglais.",
           "Son assistant IA, QualiBot, construit avec un collègue : recherche dans le référentiel ISO 9001 et les documents de l'entreprise.",
         ],
         tags: ["React 19", "NestJS", "TypeScript", "PostgreSQL", "WebSockets", "Docker"],
@@ -181,7 +181,7 @@ export const fr: Dict = {
         company: "Maxula Consulting",
         place: "Tunis, Tunisie · Hybride",
         dates: "Avr. 2026 - Aujourd'hui",
-        text: "Seul développeur de Testudo : design de l'interface, front end React, API NestJS, une base PostgreSQL par client, assistant IA, Docker et serveur de production.",
+        text: "Seul développeur de Testudo : design de l'interface, front end React, API NestJS, PostgreSQL multi-tenant, assistant IA, Docker et serveur de production.",
       },
       {
         role: "Ingénieur Data",
@@ -270,12 +270,12 @@ export const fr: Dict = {
             text: "Documents, audits, non-conformités, plans d'action, risques et opportunités, indicateurs, formation, prestataires, clients et enquêtes, contexte, vérification des équipements et enregistrements. Toute fiche peut être liée à une autre, et chaque lien se lit dans les deux sens.",
           },
           {
-            title: "Une base de données par client",
-            text: "Chaque entreprise a sa propre base PostgreSQL, créée et migrée automatiquement. Les données d'un client ne peuvent jamais apparaître dans la requête d'un autre.",
+            title: "Multi-tenant, données isolées",
+            text: "Une seule plateforme sert plusieurs entreprises, et les données de chacune sont isolées au niveau de la base. L'espace d'un nouveau client est créé et tenu à jour automatiquement.",
           },
           {
-            title: "Un contrôle d'accès qui s'explique",
-            text: "Des droits par employé et par rubrique, des matrices de responsabilités par processus, et des règles par fiche : sans le droit de consulter un module, on ne voit que les fiches où l'on est nommé. Tout est appliqué côté serveur.",
+            title: "Des droits par rôle, jusqu'à la fiche",
+            text: "Des droits par personne et par module, combinés à des matrices de responsabilités, décident qui voit et fait quoi, jusqu'à une fiche précise. Chaque règle est appliquée par l'API, pas seulement masquée dans l'interface.",
           },
           {
             title: "Le temps réel par défaut",
@@ -283,24 +283,24 @@ export const fr: Dict = {
           },
           {
             title: "Des rapports en deux langues",
-            text: "Une fiche PDF pour chaque enregistrement, un export Excel pour chaque liste, treize rapports de performance et des supports de revue de direction en PDF et PowerPoint, en français ou en anglais.",
+            text: "Fiches PDF générées, exports Excel, rapports de performance avec graphiques et supports de revue de direction en PDF et PowerPoint, le tout en français ou en anglais.",
           },
           {
             title: "Un assistant qui agit",
-            text: "QualiBot répond à partir du référentiel ISO 9001 et des documents de l'entreprise, et peut ouvrir un document ou amener l'utilisateur sur le bon écran.",
+            text: "QualiBot s'appuie sur la recherche documentaire (RAG) pour répondre à partir du référentiel ISO 9001 et des documents de l'entreprise, et peut agir dans le produit, par exemple en amenant l'utilisateur sur le bon écran.",
           },
         ],
       },
       architecture: {
         title: "Architecture",
-        text: "Une application React dialogue avec une API NestJS derrière un reverse proxy. L'API accède à une base PostgreSQL par client, à un stockage objet pour les fichiers et à un service Python séparé pour l'IA. L'ensemble tourne dans Docker sur un serveur que j'ai installé et que je maintiens.",
+        text: "Une application React dialogue avec une API NestJS derrière un reverse proxy. L'API s'appuie sur PostgreSQL, un stockage objet pour les fichiers et un service Python séparé pour l'IA. L'ensemble tourne dans Docker sur un serveur que j'ai installé et que je maintiens.",
         nodes: {
           browser: { title: "Navigateur", text: "React 19 · TypeScript · React Query · Tailwind CSS" },
-          proxy: { title: "Reverse proxy", text: "Traefik · HTTPS · un sous-domaine par client" },
+          proxy: { title: "Reverse proxy", text: "Traefik · HTTPS" },
           api: { title: "API", text: "NestJS · TypeORM · REST + WebSockets" },
-          db: { title: "Bases de données", text: "PostgreSQL · une base par client" },
-          files: { title: "Fichiers", text: "Stockage objet compatible S3 · conversion PDF" },
-          ai: { title: "Service IA", text: "Python · FastAPI · RAG · Mistral" },
+          db: { title: "Base de données", text: "PostgreSQL · données isolées par client" },
+          files: { title: "Fichiers", text: "Stockage objet · génération de PDF" },
+          ai: { title: "Service IA", text: "Python · FastAPI · RAG · LLM" },
         },
       },
       quality: {
@@ -311,7 +311,7 @@ export const fr: Dict = {
           { value: "2", label: "langues sur les écrans, les PDF et les exports" },
           { value: "12", label: "modules sur un même système de design" },
         ],
-        text: "Au-delà des tests unitaires, des tests de garde lisent le code source et font échouer la compilation quand une règle est enfreinte, par exemple un nouvel écran qui oublie le contrôle d'accès. Des scripts de navigateur rejouent de vrais parcours utilisateur avant chaque version.",
+        text: "Au-delà des tests unitaires, des tests de garde lisent le code source et font échouer la compilation quand une règle du projet est enfreinte : l'erreur est arrêtée avant la mise en ligne. Des scripts de navigateur rejouent de vrais parcours utilisateur avant chaque version.",
       },
       stack: {
         title: "Technologies",
