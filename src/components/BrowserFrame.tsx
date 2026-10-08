@@ -5,7 +5,7 @@
 import Image from "next/image";
 
 export function BrowserFrame({
-  src, alt, address, ratio = "aspect-[16/10]", priority = false, position = "object-left-top",
+  src, alt, address, ratio = "aspect-[10/7]", priority = false, position = "object-left-top",
 }: {
   src: string;
   alt: string;

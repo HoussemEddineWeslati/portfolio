@@ -125,7 +125,7 @@ export function HomePage({ t, lang }: { t: Dict; lang: Lang }) {
               </span>
             </div>
             <div className="hero-backdrop flex items-center border-t border-line bg-surface-2 p-6 sm:p-9 lg:border-l lg:border-t-0">
-              <BrowserFrame src="/work/testudo/dashboard.jpg" alt={t.testudo.dashboardAlt} address={site.testudoAddress} />
+              <BrowserFrame src="/work/testudo/indicators.jpg" alt={t.testudo.dashboardAlt} address={site.testudoAddress} />
             </div>
           </Link>
 

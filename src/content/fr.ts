@@ -169,7 +169,7 @@ export const fr: Dict = {
   testudo: {
     back: "Toutes les réalisations",
     visit: "Voir testudo-pro.com",
-    dashboardAlt: "Tableau de bord Testudo : indicateurs qualité et mesures en attente",
+    dashboardAlt: "Tableau de bord Testudo : graphiques des indicateurs qualité",
     mapAlt: "Cartographie des processus Testudo : processus de management, de réalisation et de support",
     screensTitle: "Le produit",
     screensNote: "Deux écrans d'un espace de démonstration : le tableau de bord et la cartographie des processus, point de départ de chaque entreprise.",

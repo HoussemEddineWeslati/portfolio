@@ -75,7 +75,7 @@ export function TestudoPage({ t, lang }: { t: Dict; lang: Lang }) {
           <Block title={c.screensTitle}>
             <p className="mb-7 max-w-3xl text-base leading-relaxed text-soft">{c.screensNote}</p>
             <div className="grid gap-5 md:grid-cols-2">
-              <BrowserFrame src="/work/testudo/dashboard.jpg" alt={c.dashboardAlt} address={site.testudoAddress} priority />
+              <BrowserFrame src="/work/testudo/indicators.jpg" alt={c.dashboardAlt} address={site.testudoAddress} priority />
               <BrowserFrame src="/work/testudo/cartography.jpg" alt={c.mapAlt} address={site.testudoAddress} />
             </div>
           </Block>

@@ -168,7 +168,7 @@ export const en = {
   testudo: {
     back: "All work",
     visit: "Visit testudo-pro.com",
-    dashboardAlt: "Testudo dashboard: quality indicators and pending measures",
+    dashboardAlt: "Testudo dashboard: quality indicator charts",
     mapAlt: "Testudo process map: management, operational and support processes",
     screensTitle: "The product",
     screensNote: "Two screens from a demonstration workspace: the dashboard and the process map every company starts from.",
