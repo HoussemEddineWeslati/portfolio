@@ -55,10 +55,10 @@ export function HomePage({ t, lang }: { t: Dict; lang: Lang }) {
               <div className="accent-bar absolute -inset-px rounded-[1.75rem] opacity-60 blur-xl" aria-hidden />
               <div className="relative overflow-hidden rounded-[1.75rem] border border-line bg-surface">
                 <Image
-                  src="/houssem.jpg"
+                  src="/houssem-weslati.jpg"
                   alt={t.hero.photoAlt}
                   width={880}
-                  height={1100}
+                  height={880}
                   sizes="(min-width: 1024px) 384px, 320px"
                   loading="eager"
                   fetchPriority="high"
