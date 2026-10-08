@@ -19,7 +19,7 @@ export function ThemeToggle({ label }: { label: string }) {
       onClick={toggle}
       aria-label={label}
       title={label}
-      className="flex h-9 w-9 items-center justify-center rounded-lg border border-line text-muted transition-colors hover:border-accent hover:text-accent"
+      className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border border-line text-muted transition-colors hover:border-accent hover:text-accent"
     >
       <MoonIcon className="theme-moon h-4 w-4" />
       <SunIcon className="theme-sun h-4 w-4" />

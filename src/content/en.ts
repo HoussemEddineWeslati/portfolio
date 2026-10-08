@@ -14,7 +14,7 @@ export const en = {
     experience: "Experience",
     stack: "Stack",
     contact: "Contact",
-    switchTo: "FR",
+    language: "Language",
     switchLabel: "Lire en français",
     theme: "Switch between light and dark theme",
     home: "Back to home",

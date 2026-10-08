@@ -15,7 +15,7 @@ export const fr: Dict = {
     experience: "Expérience",
     stack: "Technologies",
     contact: "Contact",
-    switchTo: "EN",
+    language: "Langue",
     switchLabel: "Read in English",
     theme: "Basculer entre thème clair et thème sombre",
     home: "Retour à l'accueil",
