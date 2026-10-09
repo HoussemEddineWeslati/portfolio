@@ -76,7 +76,7 @@ export const en = {
         title: "Testudo",
         text: "An ISO 9001 quality management platform: documents, audits, non-conformities, action plans, risks and indicators in one place.",
         points: [
-          "Built the whole product alone, from the first screen to production: 12 modules, multi-tenant with isolated data per customer.",
+          "Built the whole product alone, from the first screen to production: 12 modules, multi-tenant with a subdomain and isolated data per customer.",
           "Role-based access down to the record, real-time updates over WebSockets, PDF and Excel reporting in French and English.",
           "Built its AI assistant, QualiBot, with a colleague: retrieval over ISO 9001 knowledge and company documents.",
         ],
@@ -269,8 +269,8 @@ export const en = {
             text: "Documents, audits, non-conformities, action plans, risks and opportunities, indicators, training, suppliers, customers and surveys, context, equipment checks and records. Any record can be linked to any other, and each link reads in both directions.",
           },
           {
-            title: "Multi-tenant with isolated data",
-            text: "One platform serves many companies, with each company's data isolated at the database level. A new customer workspace is provisioned and kept up to date automatically.",
+            title: "Multi-tenant: own address, isolated data",
+            text: "One platform serves many companies. Each one gets its own subdomain and its data isolated at the database level, and a new customer workspace is provisioned and kept up to date automatically.",
           },
           {
             title: "Role-based access, down to the record",
@@ -295,7 +295,7 @@ export const en = {
         text: "A React application talks to a NestJS API behind a reverse proxy. The API works with PostgreSQL, object storage for files and a separate Python service for AI. Everything runs in Docker on a server I set up and maintain.",
         nodes: {
           browser: { title: "Browser", text: "React 19 · TypeScript · React Query · Tailwind CSS" },
-          proxy: { title: "Reverse proxy", text: "Traefik · HTTPS" },
+          proxy: { title: "Reverse proxy", text: "Traefik · HTTPS · one subdomain per customer" },
           api: { title: "API", text: "NestJS · TypeORM · REST + WebSockets" },
           db: { title: "Database", text: "PostgreSQL · data isolated per customer" },
           files: { title: "Files", text: "Object storage · PDF generation" },

@@ -77,7 +77,7 @@ export const fr: Dict = {
         title: "Testudo",
         text: "Une plateforme de management de la qualité ISO 9001 : documents, audits, non-conformités, plans d'action, risques et indicateurs au même endroit.",
         points: [
-          "Tout le produit construit seul, du premier écran à la production : 12 modules, multi-tenant avec des données isolées par client.",
+          "Tout le produit construit seul, du premier écran à la production : 12 modules, multi-tenant avec un sous-domaine et des données isolées par client.",
           "Droits par rôle jusqu'à la fiche, temps réel par WebSockets, rapports PDF et Excel en français et en anglais.",
           "Son assistant IA, QualiBot, construit avec un collègue : recherche dans le référentiel ISO 9001 et les documents de l'entreprise.",
         ],
@@ -270,8 +270,8 @@ export const fr: Dict = {
             text: "Documents, audits, non-conformités, plans d'action, risques et opportunités, indicateurs, formation, prestataires, clients et enquêtes, contexte, vérification des équipements et enregistrements. Toute fiche peut être liée à une autre, et chaque lien se lit dans les deux sens.",
           },
           {
-            title: "Multi-tenant, données isolées",
-            text: "Une seule plateforme sert plusieurs entreprises, et les données de chacune sont isolées au niveau de la base. L'espace d'un nouveau client est créé et tenu à jour automatiquement.",
+            title: "Multi-tenant : adresse propre, données isolées",
+            text: "Une seule plateforme sert plusieurs entreprises. Chacune a son propre sous-domaine et ses données isolées au niveau de la base, et l'espace d'un nouveau client est créé et tenu à jour automatiquement.",
           },
           {
             title: "Des droits par rôle, jusqu'à la fiche",
@@ -296,7 +296,7 @@ export const fr: Dict = {
         text: "Une application React dialogue avec une API NestJS derrière un reverse proxy. L'API s'appuie sur PostgreSQL, un stockage objet pour les fichiers et un service Python séparé pour l'IA. L'ensemble tourne dans Docker sur un serveur que j'ai installé et que je maintiens.",
         nodes: {
           browser: { title: "Navigateur", text: "React 19 · TypeScript · React Query · Tailwind CSS" },
-          proxy: { title: "Reverse proxy", text: "Traefik · HTTPS" },
+          proxy: { title: "Reverse proxy", text: "Traefik · HTTPS · un sous-domaine par client" },
           api: { title: "API", text: "NestJS · TypeORM · REST + WebSockets" },
           db: { title: "Base de données", text: "PostgreSQL · données isolées par client" },
           files: { title: "Fichiers", text: "Stockage objet · génération de PDF" },
