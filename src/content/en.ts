@@ -221,7 +221,7 @@ export const en = {
   contact: {
     eyebrow: "Contact",
     title: "Have a product to build, or an AI feature to add?",
-    text: "Tell me what you need. I reply within one working day, in English or French.",
+    text: "Tell me what you need. I reply within one working day. I work in English, and messages in French are welcome.",
     email: "Email me",
     linkedin: "Message me on LinkedIn",
     github: "GitHub",

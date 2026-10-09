@@ -222,7 +222,7 @@ export const fr: Dict = {
   contact: {
     eyebrow: "Contact",
     title: "Un produit à construire, ou une fonctionnalité d'IA à ajouter ?",
-    text: "Dites-moi ce dont vous avez besoin. Je réponds sous un jour ouvré, en français ou en anglais.",
+    text: "Dites-moi ce dont vous avez besoin. Je réponds sous un jour ouvré. Je travaille en anglais, et vos messages en français sont les bienvenus.",
     email: "M'écrire",
     linkedin: "M'écrire sur LinkedIn",
     github: "GitHub",
