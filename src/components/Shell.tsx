@@ -42,7 +42,10 @@ export function pageMetadata(lang: Lang, title: string, description: string, pat
       siteName: site.name,
       locale: lang === "fr" ? "fr_FR" : "en_GB",
       type: "website",
+      /* The card shown when the address is shared (LinkedIn, WhatsApp, Slack). */
+      images: [{ url: "/og.jpg", width: 2400, height: 1260, alt: title }],
     },
+    twitter: { card: "summary_large_image", title, description, images: ["/og.jpg"] },
     icons: { icon: "/icon.svg" },
   };
 }
