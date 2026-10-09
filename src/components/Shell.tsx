@@ -11,9 +11,13 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 /* Runs before the first paint. It marks the page as scripted (`html.js`), which
    is what lets the stylesheet hide the elements that will be revealed on
-   scroll: without JavaScript nothing is ever hidden. It also applies the saved
-   theme, so a light-theme visitor never sees a dark flash. */
-const themeScript = `document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+   scroll: without JavaScript nothing is ever hidden.
+
+   It also sets the theme. A choice made with the toggle wins and is remembered;
+   otherwise the site follows the visitor's device, and keeps following it if
+   the device switches while the page is open. Light is the default: dark is
+   used only when the device asks for it. */
+const themeScript = `(function(){var d=document.documentElement;d.classList.add("js");function saved(){try{var t=localStorage.getItem("theme");return t==="light"||t==="dark"?t:null}catch(e){return null}}var m=window.matchMedia("(prefers-color-scheme: dark)");d.dataset.theme=saved()||(m.matches?"dark":"light");if(m.addEventListener)m.addEventListener("change",function(e){if(!saved())d.dataset.theme=e.matches?"dark":"light"})})()`;
 
 export function Shell({ lang, children }: { lang: Lang; children: React.ReactNode }) {
   return (

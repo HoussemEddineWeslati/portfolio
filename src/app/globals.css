@@ -34,6 +34,24 @@
   color-scheme: light;
 }
 
+/* Without JavaScript no theme is set: light, unless the device asks for dark. */
+@media not (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-2: #f1f5f9;
+    --line: #e2e8f0;
+    --ink: #0f172a;
+    --soft: #334155;
+    --muted: #64748b;
+    --accent: #059669;
+    --accent-2: #0284c7;
+    --accent-ink: #ffffff;
+    --grid: rgb(15 23 42 / 0.05);
+    --glow: rgb(2 132 199 / 0.1);
+    color-scheme: light;
+  }
+}
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
