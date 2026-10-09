@@ -84,7 +84,7 @@ export const fr: Dict = {
         tags: ["React 19", "NestJS", "TypeScript", "PostgreSQL", "WebSockets", "Docker"],
         image: "/work/testudo/indicators.jpg",
         alt: "Tableau de bord Testudo : graphiques des indicateurs qualité",
-        address: "https://app.testudo-pro.com",
+        address: "https://testudo-pro.com",
         real: true,
         href: "testudo",
       },

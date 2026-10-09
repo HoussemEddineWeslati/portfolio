@@ -8,7 +8,7 @@ export const site = {
   github: "https://github.com/HoussemEddineWeslati",
   location: "Tunis, Tunisia",
   testudoUrl: "https://testudo-pro.com/",
-  testudoAddress: "https://app.testudo-pro.com",
+  testudoAddress: "https://testudo-pro.com",
 } as const;
 
 export type Lang = "en" | "fr";

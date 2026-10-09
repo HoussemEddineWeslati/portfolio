@@ -83,7 +83,7 @@ export const en = {
         tags: ["React 19", "NestJS", "TypeScript", "PostgreSQL", "WebSockets", "Docker"],
         image: "/work/testudo/indicators.jpg",
         alt: "Testudo dashboard: quality indicator charts",
-        address: "https://app.testudo-pro.com",
+        address: "https://testudo-pro.com",
         real: true,
         href: "testudo",
       },
