@@ -92,7 +92,7 @@ export const en = {
         cats: ["ai"],
         kicker: "AI chatbot · Voice · Accessibility",
         title: "Voice assistant for a ticketing site",
-        text: "A voice-enabled chatbot on an e-ticketing website, so that people with disabilities can find an event and buy tickets by speaking, in English and German.",
+        text: "A voice-enabled chatbot for an e-ticketing website, so that people with disabilities can find an event and buy tickets by speaking, in English and German.",
         points: [
           "Speech in and speech out with OpenAI models and ElevenLabs.",
           "Answers from the site's own event data through retrieval (RAG) over a vector store.",

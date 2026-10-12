@@ -39,12 +39,12 @@ export const cases: Record<CaseId, Record<Lang, CaseStudy>> = {
         "How I built a voice chatbot that lets people with disabilities find an event, get answers and buy a ticket by speaking, in English and German.",
       kicker: "Case study · AI chatbot · Voice · Accessibility",
       title: "Voice assistant for a ticketing site",
-      lead: "A voice chatbot on an e-ticketing website, so that people with disabilities can find an event, get answers and buy a ticket by speaking.",
+      lead: "A voice chatbot for an e-ticketing website, so that people with disabilities can find an event, get answers and buy a ticket by speaking.",
       facts: [
         { label: "Role", value: "Sole developer" },
         { label: "Company", value: "24 B.E.Y." },
         { label: "Period", value: "May 2025 - Dec 2025" },
-        { label: "Status", value: "Live for users" },
+        { label: "Status", value: "Before launch" },
       ],
       image: "/work/mock/voice-assistant.jpg",
       imageAlt: "A ticketing website with the voice assistant open, confirming two seats",
@@ -61,7 +61,7 @@ export const cases: Record<CaseId, Record<Lang, CaseStudy>> = {
         title: "My role",
         text: [
           "I built the assistant alone at 24 B.E.Y., a German startup based in Tunis: the speech pipeline, the search over the events, the conversation logic and the integration with the website.",
-          "It went live on the ticketing site and speaks English and German.",
+          "It speaks English and German. It had not launched yet when I left the company.",
         ],
       },
       built: {
@@ -130,12 +130,12 @@ export const cases: Record<CaseId, Record<Lang, CaseStudy>> = {
         "Comment j'ai construit un chatbot vocal qui permet aux personnes en situation de handicap de trouver un événement, d'obtenir des réponses et d'acheter un billet en parlant, en anglais et en allemand.",
       kicker: "Étude de cas · Chatbot IA · Voix · Accessibilité",
       title: "Assistant vocal pour une billetterie",
-      lead: "Un chatbot vocal sur un site de billetterie en ligne, pour que les personnes en situation de handicap trouvent un événement, obtiennent des réponses et achètent un billet en parlant.",
+      lead: "Un chatbot vocal pour un site de billetterie en ligne, pour que les personnes en situation de handicap trouvent un événement, obtiennent des réponses et achètent un billet en parlant.",
       facts: [
         { label: "Rôle", value: "Seul développeur" },
         { label: "Entreprise", value: "24 B.E.Y." },
         { label: "Période", value: "Mai 2025 - Déc. 2025" },
-        { label: "État", value: "En ligne" },
+        { label: "État", value: "Avant lancement" },
       ],
       image: "/work/mock/voice-assistant.jpg",
       imageAlt: "Un site de billetterie avec l'assistant vocal ouvert, qui confirme deux places",
@@ -152,7 +152,7 @@ export const cases: Record<CaseId, Record<Lang, CaseStudy>> = {
         title: "Mon rôle",
         text: [
           "J'ai construit l'assistant seul chez 24 B.E.Y., une startup allemande installée à Tunis : la chaîne vocale, la recherche dans les événements, la logique de conversation et l'intégration au site.",
-          "Il a été mis en ligne sur le site de billetterie et parle anglais et allemand.",
+          "Il parle anglais et allemand. Il n'était pas encore lancé quand j'ai quitté l'entreprise.",
         ],
       },
       built: {

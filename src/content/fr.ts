@@ -93,7 +93,7 @@ export const fr: Dict = {
         cats: ["ai"],
         kicker: "Chatbot IA · Voix · Accessibilité",
         title: "Assistant vocal pour une billetterie",
-        text: "Un chatbot vocal sur un site de billetterie en ligne, pour que les personnes en situation de handicap trouvent un événement et achètent un billet en parlant, en anglais et en allemand.",
+        text: "Un chatbot vocal pour un site de billetterie en ligne, pour que les personnes en situation de handicap trouvent un événement et achètent un billet en parlant, en anglais et en allemand.",
         points: [
           "Reconnaissance et synthèse vocales avec les modèles OpenAI et ElevenLabs.",
           "Répond à partir des données du site grâce à la recherche documentaire (RAG) sur une base vectorielle.",
