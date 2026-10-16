@@ -7,7 +7,7 @@ export const en = {
       "Full Stack Engineer building web applications end to end with React, NestJS and TypeScript, and AI features such as chatbots and agents. Available for remote projects.",
     testudoTitle: "Testudo case study | Houssem Eddine Weslati",
     testudoDescription:
-      "How I built Testudo, a multi-tenant SaaS for ISO 9001 quality management, from the first screen to production.",
+      "How I built Testudo (testudo-pro.com), a multi-tenant SaaS for ISO 9001 quality management, from the first screen to production.",
   },
   nav: {
     work: "Work",
@@ -180,7 +180,7 @@ export const en = {
         company: "Maxula Consulting",
         place: "Tunis, Tunisia · Hybrid",
         dates: "Apr 2026 - Present",
-        text: "Sole developer of Testudo: interface design, React front end, NestJS API, multi-tenant PostgreSQL, AI assistant, Docker and the production server.",
+        text: "Sole developer of Testudo (testudo-pro.com): interface design, React front end, NestJS API, multi-tenant PostgreSQL, AI assistant, Docker and the production server.",
       },
       {
         role: "Data Engineer",
