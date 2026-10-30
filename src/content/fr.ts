@@ -8,7 +8,7 @@ export const fr: Dict = {
       "Ingénieur Full Stack : je construis des applications web de bout en bout avec React, NestJS et TypeScript, et des fonctionnalités d'IA comme des chatbots et des agents. Disponible pour des projets à distance.",
     testudoTitle: "Étude de cas Testudo | Houssem Eddine Weslati",
     testudoDescription:
-      "Comment j'ai construit Testudo (testudo-pro.com), un SaaS multi-tenant de management de la qualité ISO 9001, du premier écran à la production.",
+      "Comment j'ai construit Testudo (testudo-pro.com), un SaaS multi-tenant pour les systèmes de management ISO, du premier écran à la production.",
   },
   nav: {
     work: "Réalisations",
@@ -75,7 +75,7 @@ export const fr: Dict = {
         cats: ["fullstack", "ai"],
         kicker: "SaaS multi-tenant · En production",
         title: "Testudo",
-        text: "Une plateforme de management de la qualité ISO 9001 : documents, audits, non-conformités, plans d'action, risques et indicateurs au même endroit.",
+        text: "Une plateforme pour les systèmes de management ISO : documents, audits, non-conformités, plans d'action, risques et indicateurs au même endroit. ISO 9001 est en production, et la plateforme est conçue pour s'étendre à ISO 45001, ISO 14001, ISO 27001 et d'autres normes.",
         points: [
           "Tout le produit construit seul, du premier écran à la production : 12 modules, multi-tenant avec un sous-domaine et des données isolées par client.",
           "Droits par rôle jusqu'à la fiche, temps réel par WebSockets, rapports PDF et Excel en français et en anglais.",
@@ -240,7 +240,7 @@ export const fr: Dict = {
     screensNote: "Deux écrans d'un espace de démonstration : le tableau de bord et la cartographie des processus, point de départ de chaque entreprise.",
     kicker: "Étude de cas · SaaS multi-tenant · En production",
     title: "Testudo",
-    lead: "Une plateforme de management de la qualité ISO 9001, construite du premier écran à la production.",
+    lead: "Une plateforme pour les systèmes de management ISO, ISO 9001 en premier, construite du premier écran à la production.",
     facts: [
       { label: "Rôle", value: "Seul développeur" },
       { label: "Entreprise", value: "Maxula Consulting" },
@@ -251,8 +251,9 @@ export const fr: Dict = {
       problem: {
         title: "Le problème",
         text: [
-          "Une entreprise certifiée ISO 9001 doit prouver, à chaque audit, que son système qualité vit : les documents sont approuvés et à jour, les non-conformités sont analysées et clôturées, les actions sont suivies, les risques sont évalués, les indicateurs sont mesurés.",
+          "Une entreprise certifiée ISO 9001, ISO 14001 ou ISO 45001 doit prouver, à chaque audit, que son système de management vit : les documents sont approuvés et à jour, les non-conformités sont analysées et clôturées, les actions sont suivies, les risques sont évalués, les indicateurs sont mesurés.",
           "La plupart des entreprises gèrent cela avec des tableurs, des dossiers partagés et des emails. Testudo les remplace par une seule plateforme où chaque fiche a un responsable, un circuit, un historique et ses liens avec les autres.",
+          "Testudo est conçu pour qu'un même socle serve toutes les normes. ISO 9001 est en production ; ISO 45001, ISO 14001, ISO 22000, HACCP, ISO 50001, ISO 27001, ISO 17025 et IATF 16949 sont prévues ensuite.",
         ],
       },
       role: {

@@ -7,7 +7,7 @@ export const en = {
       "Full Stack Engineer building web applications end to end with React, NestJS and TypeScript, and AI features such as chatbots and agents. Available for remote projects.",
     testudoTitle: "Testudo case study | Houssem Eddine Weslati",
     testudoDescription:
-      "How I built Testudo (testudo-pro.com), a multi-tenant SaaS for ISO 9001 quality management, from the first screen to production.",
+      "How I built Testudo (testudo-pro.com), a multi-tenant SaaS for ISO management systems, from the first screen to production.",
   },
   nav: {
     work: "Work",
@@ -74,7 +74,7 @@ export const en = {
         cats: ["fullstack", "ai"],
         kicker: "Multi-tenant SaaS · In production",
         title: "Testudo",
-        text: "An ISO 9001 quality management platform: documents, audits, non-conformities, action plans, risks and indicators in one place.",
+        text: "A platform for ISO management systems: documents, audits, non-conformities, action plans, risks and indicators in one place. ISO 9001 is live, and it is built to extend to ISO 45001, ISO 14001, ISO 27001 and other standards.",
         points: [
           "Built the whole product alone, from the first screen to production: 12 modules, multi-tenant with a subdomain and isolated data per customer.",
           "Role-based access down to the record, real-time updates over WebSockets, PDF and Excel reporting in French and English.",
@@ -239,7 +239,7 @@ export const en = {
     screensNote: "Two screens from a demonstration workspace: the dashboard and the process map every company starts from.",
     kicker: "Case study · Multi-tenant SaaS · In production",
     title: "Testudo",
-    lead: "An ISO 9001 quality management platform, built from the first screen to production.",
+    lead: "A platform for ISO management systems, ISO 9001 first, built from the first screen to production.",
     facts: [
       { label: "Role", value: "Sole developer" },
       { label: "Company", value: "Maxula Consulting" },
@@ -250,8 +250,9 @@ export const en = {
       problem: {
         title: "The problem",
         text: [
-          "A company certified ISO 9001 has to prove, at every audit, that its quality system is alive: documents are approved and up to date, non-conformities are analysed and closed, actions are followed, risks are assessed, indicators are measured.",
+          "A company certified ISO 9001, ISO 14001 or ISO 45001 has to prove, at every audit, that its management system is alive: documents are approved and up to date, non-conformities are analysed and closed, actions are followed, risks are assessed, indicators are measured.",
           "Most companies run this on spreadsheets, shared folders and email. Testudo replaces them with one platform where every record has an owner, a workflow, a history and its links to the others.",
+          "Testudo is built so that one foundation serves every standard. ISO 9001 is live today; ISO 45001, ISO 14001, ISO 22000, HACCP, ISO 50001, ISO 27001, ISO 17025 and IATF 16949 are on the roadmap.",
         ],
       },
       role: {
