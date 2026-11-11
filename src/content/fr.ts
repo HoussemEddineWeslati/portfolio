@@ -8,7 +8,7 @@ export const fr: Dict = {
       "Ingénieur Full Stack : je construis des applications web de bout en bout avec React, NestJS et TypeScript, et des fonctionnalités d'IA comme des chatbots et des agents. Disponible pour des projets à distance.",
     testudoTitle: "Étude de cas Testudo | Houssem Eddine Weslati",
     testudoDescription:
-      "Comment j'ai construit Testudo (testudo-pro.com), un SaaS multi-tenant pour les systèmes de management ISO, du premier écran à la production.",
+      "Testudo (testudo-pro.com), un SaaS pour les systèmes de management ISO, et mon travail dessus comme Ingénieur Full Stack.",
   },
   nav: {
     work: "Réalisations",
@@ -38,9 +38,9 @@ export const fr: Dict = {
   },
   proof: [
     { count: 2, suffix: " ans", label: "d'expérience professionnelle" },
-    { count: 1, suffix: " SaaS", label: "construit et en production" },
-    { count: 1600, suffix: "+", label: "tests automatisés dans ce code" },
-    { count: 12, suffix: " modules", label: "conçus et livrés dans un même produit" },
+    { count: 1, suffix: " SaaS", label: "sur lequel je travaille de bout en bout, en production" },
+    { count: 2, suffix: " agents IA", label: "assistants vocaux construits sur des LLM" },
+    { count: 3, suffix: " langues", label: "arabe, français et anglais" },
   ],
   services: {
     eyebrow: "Ce que je fais",
@@ -48,7 +48,7 @@ export const fr: Dict = {
     items: [
       {
         title: "Applications web full stack",
-        text: "Interfaces React et Next.js, API NestJS et Node.js, PostgreSQL. Typé de bout en bout, avec contrôle d'accès, temps réel et tests automatisés.",
+        text: "Interfaces React et Next.js, API NestJS et Node.js, PostgreSQL. Typé de bout en bout, avec contrôle d'accès et tests automatisés.",
       },
       {
         title: "Des fonctionnalités d'IA utiles",
@@ -56,7 +56,7 @@ export const fr: Dict = {
       },
       {
         title: "Données et mise en production",
-        text: "Migrations et pipelines de données en Python et SQL. Docker, reverse proxy et versions numérotées sur un serveur que j'installe et que j'exploite.",
+        text: "Migrations et pipelines de données en Python et SQL. Docker et versions numérotées mises en production.",
       },
     ],
   },
@@ -73,15 +73,15 @@ export const fr: Dict = {
       {
         id: "testudo",
         cats: ["fullstack", "ai"],
-        kicker: "SaaS multi-tenant · En production",
+        kicker: "SaaS · En production",
         title: "Testudo",
         text: "Une plateforme pour les systèmes de management ISO : documents, audits, non-conformités, plans d'action, risques et indicateurs au même endroit. ISO 9001 est en production, et la plateforme est conçue pour s'étendre à ISO 45001, ISO 14001, ISO 27001 et d'autres normes.",
         points: [
-          "Tout le produit construit du premier écran à la production : 12 modules, multi-tenant avec un sous-domaine et des données isolées par client.",
-          "Droits par rôle jusqu'à la fiche, temps réel par WebSockets, rapports PDF et Excel en français et en anglais.",
-          "Son assistant IA, QualiBot, construit avec un collègue : recherche dans le référentiel ISO 9001 et les documents de l'entreprise.",
+          "Ingénieur Full Stack sur le produit, je travaille de bout en bout, du front end au back end.",
+          "Tout ce dont un système de management ISO a besoin au même endroit, avec des rapports en français et en anglais.",
+          "Son assistant IA, QualiBot, construit avec un collègue.",
         ],
-        tags: ["React 19", "NestJS", "TypeScript", "PostgreSQL", "WebSockets", "Docker"],
+        tags: ["React", "SaaS", "Assistant IA"],
         image: "/work/testudo/indicators.jpg",
         alt: "Tableau de bord Testudo : graphiques des indicateurs qualité",
         address: "https://testudo-pro.com",
@@ -178,10 +178,10 @@ export const fr: Dict = {
     items: [
       {
         role: "Ingénieur Full Stack",
-        company: "Testudo Pro",
+        company: "Testudo",
         place: "Tunis, Tunisie · Hybride",
         dates: "Avr. 2026 - Aujourd'hui",
-        text: "Je développe Testudo (testudo-pro.com) de bout en bout : design de l'interface, front end React, API NestJS, PostgreSQL multi-tenant, assistant IA, Docker et serveur de production.",
+        text: "Ingénieur Full Stack sur Testudo (testudo-pro.com), un SaaS pour les systèmes de management ISO : je travaille de bout en bout, du front end React au back end et à l'assistant IA.",
       },
       {
         role: "Ingénieur Data",
@@ -238,12 +238,12 @@ export const fr: Dict = {
     mapAlt: "Cartographie des processus Testudo : processus de management, de réalisation et de support",
     screensTitle: "Le produit",
     screensNote: "Deux écrans d'un espace de démonstration : le tableau de bord et la cartographie des processus, point de départ de chaque entreprise.",
-    kicker: "Étude de cas · SaaS multi-tenant · En production",
+    kicker: "Étude de cas · SaaS · En production",
     title: "Testudo",
-    lead: "Une plateforme pour les systèmes de management ISO, ISO 9001 en premier, construite du premier écran à la production.",
+    lead: "Une plateforme pour les systèmes de management ISO, ISO 9001 en premier.",
     facts: [
       { label: "Rôle", value: "Ingénieur Full Stack" },
-      { label: "Entreprise", value: "Testudo Pro" },
+      { label: "Entreprise", value: "Testudo" },
       { label: "Période", value: "Avr. 2026 - Aujourd'hui" },
       { label: "État", value: "En production" },
     ],
@@ -259,64 +259,30 @@ export const fr: Dict = {
       role: {
         title: "Mon rôle",
         text: [
-          "Je développe l'application de bout en bout. L'équipe décrit ce que le produit doit faire, étape par étape, et je transforme chaque étape en logiciel qui fonctionne : design de l'interface, front end, API, base de données, tests, déploiement et serveur.",
-          "J'ai construit l'assistant IA, QualiBot, avec un collègue.",
+          "Je suis Ingénieur Full Stack sur Testudo et je travaille de bout en bout sur le produit : interface, front end, back end et mises en production. Le front end est construit avec React.",
+          "J'ai aussi construit l'assistant IA, QualiBot, avec un collègue.",
         ],
       },
       built: {
-        title: "Ce que j'ai construit",
+        title: "Ce que fait le produit",
         items: [
           {
-            title: "Douze modules reliés",
-            text: "Documents, audits, non-conformités, plans d'action, risques et opportunités, indicateurs, formation, prestataires, clients et enquêtes, contexte, vérification des équipements et enregistrements. Toute fiche peut être liée à une autre, et chaque lien se lit dans les deux sens.",
+            title: "Un seul endroit pour le système de management",
+            text: "Documents, audits, non-conformités, plans d'action, risques et indicateurs vivent sur une seule plateforme au lieu de tableurs et de dossiers partagés, et les fiches liées restent reliées.",
           },
           {
-            title: "Multi-tenant : adresse propre, données isolées",
-            text: "Une seule plateforme sert plusieurs entreprises. Chacune a son propre sous-domaine et ses données isolées au niveau de la base, et l'espace d'un nouveau client est créé et tenu à jour automatiquement.",
+            title: "Des responsabilités claires",
+            text: "Chaque fiche a un responsable, un circuit et un historique : l'équipe sait toujours qui fait quoi et peut le montrer à l'audit.",
           },
           {
-            title: "Des droits par rôle, jusqu'à la fiche",
-            text: "Des droits par personne et par module décident qui voit et fait quoi, jusqu'à une fiche précise. Chaque règle est appliquée par l'API, pas seulement masquée dans l'interface.",
+            title: "Des rapports prêts pour l'audit",
+            text: "Fiches et rapports s'exportent pour les audits et les revues de direction, en français ou en anglais.",
           },
           {
-            title: "Le temps réel par défaut",
-            text: "Quand un utilisateur modifie quelque chose, tous les autres le voient sans recharger, grâce aux WebSockets et à une invalidation ciblée du cache.",
-          },
-          {
-            title: "Des rapports en deux langues",
-            text: "Fiches PDF générées, exports Excel, rapports de performance avec graphiques et supports de revue de direction en PDF et PowerPoint, le tout en français ou en anglais.",
-          },
-          {
-            title: "Un assistant qui agit",
-            text: "QualiBot s'appuie sur la recherche documentaire (RAG) pour répondre à partir du référentiel ISO 9001 et des documents de l'entreprise, et peut agir dans le produit, par exemple en amenant l'utilisateur sur le bon écran.",
+            title: "Un assistant IA",
+            text: "QualiBot répond aux questions sur ISO 9001 et sur les documents de l'entreprise, et guide l'utilisateur dans le produit.",
           },
         ],
-      },
-      architecture: {
-        title: "Architecture",
-        text: "Une application React dialogue avec une API NestJS derrière un reverse proxy. L'API s'appuie sur PostgreSQL, un stockage objet pour les fichiers et un service Python séparé pour l'IA. L'ensemble tourne dans Docker sur un serveur que j'ai installé et que je maintiens.",
-        nodes: {
-          browser: { title: "Navigateur", text: "React 19 · TypeScript · React Query · Tailwind CSS" },
-          proxy: { title: "Reverse proxy", text: "Traefik · HTTPS · un sous-domaine par client" },
-          api: { title: "API", text: "NestJS · TypeORM · REST + WebSockets" },
-          db: { title: "Base de données", text: "PostgreSQL · données isolées par client" },
-          files: { title: "Fichiers", text: "Stockage objet · génération de PDF" },
-          ai: { title: "Service IA", text: "Python · FastAPI · RAG · LLM" },
-        },
-      },
-      quality: {
-        title: "Qualité et mise en production",
-        items: [
-          { value: "1 600+", label: "tests automatisés sur l'API et l'application" },
-          { value: "120+", label: "versions numérotées livrées en production" },
-          { value: "2", label: "langues sur les écrans, les PDF et les exports" },
-          { value: "12", label: "modules sur un même système de design" },
-        ],
-        text: "Au-delà des tests unitaires, des tests de garde lisent le code source et font échouer la compilation quand une règle du projet est enfreinte : l'erreur est arrêtée avant la mise en ligne. Des scripts de navigateur rejouent de vrais parcours utilisateur avant chaque version.",
-      },
-      stack: {
-        title: "Technologies",
-        items: ["React 19", "TypeScript", "Vite", "React Query", "Tailwind CSS", "NestJS", "TypeORM", "PostgreSQL", "WebSockets", "Puppeteer", "Python", "FastAPI", "Docker", "Traefik", "Jest", "Vitest", "Playwright"],
       },
     },
     cta: {

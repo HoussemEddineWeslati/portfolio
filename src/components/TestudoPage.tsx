@@ -6,7 +6,7 @@ import { Header } from "./Header";
 import { BrowserFrame } from "./BrowserFrame";
 import { OtherCases } from "./CaseStudyPage";
 import { ArrowLeftIcon, ArrowRightIcon, LinkedinIcon, MailIcon } from "./icons";
-import { ButtonLink, Container, Tag } from "./ui";
+import { ButtonLink, Container } from "./ui";
 
 function Block({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -17,24 +17,9 @@ function Block({ title, children }: { title: string; children: React.ReactNode }
   );
 }
 
-function Node({ title, text, accent = false }: { title: string; text: string; accent?: boolean }) {
-  return (
-    <div className={`rounded-xl border bg-surface px-4 py-3.5 ${accent ? "border-accent/60" : "border-line"}`}>
-      <p className="text-sm font-semibold text-ink">{title}</p>
-      <p className="mt-1 font-mono text-[11px] leading-relaxed text-muted">{text}</p>
-    </div>
-  );
-}
-
-/** A vertical connector between two rows of the diagram. */
-function Down() {
-  return <span className="mx-auto block h-6 w-px bg-line" aria-hidden />;
-}
-
 export function TestudoPage({ t, lang }: { t: Dict; lang: Lang }) {
   const c = t.testudo;
   const s = c.sections;
-  const n = s.architecture.nodes;
 
   return (
     <>
@@ -102,51 +87,6 @@ export function TestudoPage({ t, lang }: { t: Dict; lang: Lang }) {
                   <p className="mt-2 text-[15px] leading-relaxed text-muted">{item.text}</p>
                 </div>
               ))}
-            </div>
-          </Block>
-
-          <Block title={s.architecture.title}>
-            <p className="mb-8 max-w-3xl text-base leading-relaxed text-soft">{s.architecture.text}</p>
-            <div className="rounded-2xl border border-line bg-surface-2 p-5 sm:p-8">
-              <div className="mx-auto max-w-md">
-                <Node {...n.browser} />
-                <Down />
-                <Node {...n.proxy} />
-                <Down />
-                <Node {...n.api} accent />
-              </div>
-              <Down />
-              {/* The API fans out to its three back ends. */}
-              <div className="mx-auto h-px w-2/3 bg-line" aria-hidden />
-              <div className="grid gap-4 sm:grid-cols-3">
-                {[n.db, n.files, n.ai].map((node) => (
-                  <div key={node.title}>
-                    <Down />
-                    <Node {...node} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Block>
-
-          <Block title={s.quality.title}>
-            <dl className="mb-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-4">
-              {s.quality.items.map((q) => (
-                <div key={q.label} className="bg-surface px-5 py-5">
-                  <dt className="sr-only">{q.label}</dt>
-                  <dd>
-                    <span className="accent-text block text-3xl font-semibold tracking-tight">{q.value}</span>
-                    <span className="mt-1.5 block text-sm leading-snug text-muted">{q.label}</span>
-                  </dd>
-                </div>
-              ))}
-            </dl>
-            <p className="max-w-3xl text-base leading-relaxed text-soft">{s.quality.text}</p>
-          </Block>
-
-          <Block title={s.stack.title}>
-            <div className="flex flex-wrap gap-2">
-              {s.stack.items.map((item) => <Tag key={item}>{item}</Tag>)}
             </div>
           </Block>
         </Container>

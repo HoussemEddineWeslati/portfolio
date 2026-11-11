@@ -7,7 +7,7 @@ export const en = {
       "Full Stack Engineer building web applications end to end with React, NestJS and TypeScript, and AI features such as chatbots and agents. Available for remote projects.",
     testudoTitle: "Testudo case study | Houssem Eddine Weslati",
     testudoDescription:
-      "How I built Testudo (testudo-pro.com), a multi-tenant SaaS for ISO management systems, from the first screen to production.",
+      "Testudo (testudo-pro.com), a SaaS for ISO management systems, and my work on it as a Full Stack Engineer.",
   },
   nav: {
     work: "Work",
@@ -37,9 +37,9 @@ export const en = {
   },
   proof: [
     { count: 2, suffix: " years", label: "of professional experience" },
-    { count: 1, suffix: " SaaS", label: "built and running in production" },
-    { count: 1600, suffix: "+", label: "automated tests in that codebase" },
-    { count: 12, suffix: " modules", label: "designed and shipped in one product" },
+    { count: 1, suffix: " SaaS", label: "worked on end to end, in production" },
+    { count: 2, suffix: " AI agents", label: "voice assistants built on LLMs" },
+    { count: 3, suffix: " languages", label: "Arabic, French and English" },
   ],
   services: {
     eyebrow: "What I do",
@@ -47,7 +47,7 @@ export const en = {
     items: [
       {
         title: "Full stack web applications",
-        text: "React and Next.js front ends, NestJS and Node.js APIs, PostgreSQL. Typed end to end, with access control, real-time updates and automated tests.",
+        text: "React and Next.js front ends, NestJS and Node.js APIs, PostgreSQL. Typed end to end, with access control and automated tests.",
       },
       {
         title: "AI features that do real work",
@@ -55,7 +55,7 @@ export const en = {
       },
       {
         title: "Data and delivery",
-        text: "Data migrations and pipelines in Python and SQL. Docker, a reverse proxy and versioned releases on a server I set up and run.",
+        text: "Data migrations and pipelines in Python and SQL. Docker and versioned releases to production.",
       },
     ],
   },
@@ -72,15 +72,15 @@ export const en = {
       {
         id: "testudo",
         cats: ["fullstack", "ai"],
-        kicker: "Multi-tenant SaaS · In production",
+        kicker: "SaaS · In production",
         title: "Testudo",
         text: "A platform for ISO management systems: documents, audits, non-conformities, action plans, risks and indicators in one place. ISO 9001 is live, and it is built to extend to ISO 45001, ISO 14001, ISO 27001 and other standards.",
         points: [
-          "Built the whole product, from the first screen to production: 12 modules, multi-tenant with a subdomain and isolated data per customer.",
-          "Role-based access down to the record, real-time updates over WebSockets, PDF and Excel reporting in French and English.",
-          "Built its AI assistant, QualiBot, with a colleague: retrieval over ISO 9001 knowledge and company documents.",
+          "Full Stack Engineer on the product, working end to end across front end and back end.",
+          "Everything an ISO management system needs in one place, with reports in French and English.",
+          "Built its AI assistant, QualiBot, with a colleague.",
         ],
-        tags: ["React 19", "NestJS", "TypeScript", "PostgreSQL", "WebSockets", "Docker"],
+        tags: ["React", "SaaS", "AI assistant"],
         image: "/work/testudo/indicators.jpg",
         alt: "Testudo dashboard: quality indicator charts",
         address: "https://testudo-pro.com",
@@ -177,10 +177,10 @@ export const en = {
     items: [
       {
         role: "Full Stack Engineer",
-        company: "Testudo Pro",
+        company: "Testudo",
         place: "Tunis, Tunisia · Hybrid",
         dates: "Apr 2026 - Present",
-        text: "Develop Testudo (testudo-pro.com) end to end: interface design, React front end, NestJS API, multi-tenant PostgreSQL, AI assistant, Docker and the production server.",
+        text: "Full Stack Engineer on Testudo (testudo-pro.com), a SaaS for ISO management systems: I work end to end, from the React front end to the back end and the AI assistant.",
       },
       {
         role: "Data Engineer",
@@ -237,12 +237,12 @@ export const en = {
     mapAlt: "Testudo process map: management, operational and support processes",
     screensTitle: "The product",
     screensNote: "Two screens from a demonstration workspace: the dashboard and the process map every company starts from.",
-    kicker: "Case study · Multi-tenant SaaS · In production",
+    kicker: "Case study · SaaS · In production",
     title: "Testudo",
-    lead: "A platform for ISO management systems, ISO 9001 first, built from the first screen to production.",
+    lead: "A platform for ISO management systems, ISO 9001 first.",
     facts: [
       { label: "Role", value: "Full Stack Engineer" },
-      { label: "Company", value: "Testudo Pro" },
+      { label: "Company", value: "Testudo" },
       { label: "Period", value: "Apr 2026 - Present" },
       { label: "Status", value: "In production" },
     ],
@@ -258,64 +258,30 @@ export const en = {
       role: {
         title: "My role",
         text: [
-          "I develop the application end to end. The team describes what the product must do, step by step, and I turn each step into working software: interface design, front end, API, database, tests, deployment and the server it runs on.",
-          "I built the AI assistant, QualiBot, with a colleague.",
+          "I am a Full Stack Engineer on Testudo and work end to end on the product: interface, front end, back end and releases. The front end is built with React.",
+          "I also built the AI assistant, QualiBot, with a colleague.",
         ],
       },
       built: {
-        title: "What I built",
+        title: "What the product does",
         items: [
           {
-            title: "Twelve connected modules",
-            text: "Documents, audits, non-conformities, action plans, risks and opportunities, indicators, training, suppliers, customers and surveys, context, equipment checks and records. Any record can be linked to any other, and each link reads in both directions.",
+            title: "One place for the management system",
+            text: "Documents, audits, non-conformities, action plans, risks and indicators live in one platform instead of spreadsheets and shared folders, and related records stay linked.",
           },
           {
-            title: "Multi-tenant: own address, isolated data",
-            text: "One platform serves many companies. Each one gets its own subdomain and its data isolated at the database level, and a new customer workspace is provisioned and kept up to date automatically.",
+            title: "Clear responsibilities",
+            text: "Every record has an owner, a workflow and a history, so the team always knows who does what and can show it at the audit.",
           },
           {
-            title: "Role-based access, down to the record",
-            text: "Permissions per person and per module decide who can see and do what, down to a single record. Every rule is enforced by the API, not only hidden in the interface.",
+            title: "Reports ready for audits",
+            text: "Records and reports can be exported for audits and management reviews, in French or English.",
           },
           {
-            title: "Real time by default",
-            text: "When one user changes something, every other user sees it without reloading, through WebSockets and targeted cache invalidation.",
-          },
-          {
-            title: "Reporting in two languages",
-            text: "Generated PDF sheets, Excel exports, performance reports with charts, and management review decks in PDF and PowerPoint, all in French or English.",
-          },
-          {
-            title: "An assistant that acts",
-            text: "QualiBot uses retrieval (RAG) to answer from ISO 9001 knowledge and the company's own documents, and can act in the product, for example by taking the user to the right screen.",
+            title: "An AI assistant",
+            text: "QualiBot answers questions about ISO 9001 and the company's own documents, and guides users through the product.",
           },
         ],
-      },
-      architecture: {
-        title: "Architecture",
-        text: "A React application talks to a NestJS API behind a reverse proxy. The API works with PostgreSQL, object storage for files and a separate Python service for AI. Everything runs in Docker on a server I set up and maintain.",
-        nodes: {
-          browser: { title: "Browser", text: "React 19 · TypeScript · React Query · Tailwind CSS" },
-          proxy: { title: "Reverse proxy", text: "Traefik · HTTPS · one subdomain per customer" },
-          api: { title: "API", text: "NestJS · TypeORM · REST + WebSockets" },
-          db: { title: "Database", text: "PostgreSQL · data isolated per customer" },
-          files: { title: "Files", text: "Object storage · PDF generation" },
-          ai: { title: "AI service", text: "Python · FastAPI · RAG · LLM" },
-        },
-      },
-      quality: {
-        title: "Quality and delivery",
-        items: [
-          { value: "1,600+", label: "automated tests across the API and the application" },
-          { value: "120+", label: "versioned releases shipped to production" },
-          { value: "2", label: "languages across screens, PDFs and exports" },
-          { value: "12", label: "modules sharing one design system" },
-        ],
-        text: "Beyond unit tests, guard tests read the source code and fail the build when a project rule is broken, so a mistake is caught before it ships. Browser scripts replay real user journeys before each release.",
-      },
-      stack: {
-        title: "Stack",
-        items: ["React 19", "TypeScript", "Vite", "React Query", "Tailwind CSS", "NestJS", "TypeORM", "PostgreSQL", "WebSockets", "Puppeteer", "Python", "FastAPI", "Docker", "Traefik", "Jest", "Vitest", "Playwright"],
       },
     },
     cta: {

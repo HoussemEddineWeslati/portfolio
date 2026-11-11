@@ -24,7 +24,7 @@ export const paths = {
 
 export const stack = [
   { key: "front", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "React Query"] },
-  { key: "back", items: ["NestJS", "Node.js", "Python", "FastAPI", "PostgreSQL", "MongoDB", "REST APIs", "WebSockets"] },
+  { key: "back", items: ["NestJS", "Node.js", "Python", "FastAPI", "PostgreSQL", "MongoDB", "REST APIs"] },
   { key: "ai", items: ["OpenAI", "Mistral", "RAG", "Function calling", "AI agents", "Voice (ElevenLabs)"] },
-  { key: "delivery", items: ["Docker", "Traefik", "Linux VPS", "Git", "Jest", "Playwright", "Azure Data Factory", "Databricks"] },
+  { key: "delivery", items: ["Docker", "Git", "Jest", "Playwright", "Azure Data Factory", "Databricks"] },
 ] as const;
