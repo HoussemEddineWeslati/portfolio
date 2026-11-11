@@ -38,7 +38,7 @@ export const fr: Dict = {
   },
   proof: [
     { count: 2, suffix: " ans", label: "d'expérience professionnelle" },
-    { count: 1, suffix: " SaaS", label: "construit seul et en production" },
+    { count: 1, suffix: " SaaS", label: "construit et en production" },
     { count: 1600, suffix: "+", label: "tests automatisés dans ce code" },
     { count: 12, suffix: " modules", label: "conçus et livrés dans un même produit" },
   ],
@@ -77,7 +77,7 @@ export const fr: Dict = {
         title: "Testudo",
         text: "Une plateforme pour les systèmes de management ISO : documents, audits, non-conformités, plans d'action, risques et indicateurs au même endroit. ISO 9001 est en production, et la plateforme est conçue pour s'étendre à ISO 45001, ISO 14001, ISO 27001 et d'autres normes.",
         points: [
-          "Tout le produit construit seul, du premier écran à la production : 12 modules, multi-tenant avec un sous-domaine et des données isolées par client.",
+          "Tout le produit construit du premier écran à la production : 12 modules, multi-tenant avec un sous-domaine et des données isolées par client.",
           "Droits par rôle jusqu'à la fiche, temps réel par WebSockets, rapports PDF et Excel en français et en anglais.",
           "Son assistant IA, QualiBot, construit avec un collègue : recherche dans le référentiel ISO 9001 et les documents de l'entreprise.",
         ],
@@ -178,10 +178,10 @@ export const fr: Dict = {
     items: [
       {
         role: "Ingénieur Full Stack",
-        company: "Maxula Consulting",
+        company: "Testudo Pro",
         place: "Tunis, Tunisie · Hybride",
         dates: "Avr. 2026 - Aujourd'hui",
-        text: "Seul développeur de Testudo (testudo-pro.com) : design de l'interface, front end React, API NestJS, PostgreSQL multi-tenant, assistant IA, Docker et serveur de production.",
+        text: "Je développe Testudo (testudo-pro.com) de bout en bout : design de l'interface, front end React, API NestJS, PostgreSQL multi-tenant, assistant IA, Docker et serveur de production.",
       },
       {
         role: "Ingénieur Data",
@@ -242,8 +242,8 @@ export const fr: Dict = {
     title: "Testudo",
     lead: "Une plateforme pour les systèmes de management ISO, ISO 9001 en premier, construite du premier écran à la production.",
     facts: [
-      { label: "Rôle", value: "Seul développeur" },
-      { label: "Entreprise", value: "Maxula Consulting" },
+      { label: "Rôle", value: "Ingénieur Full Stack" },
+      { label: "Entreprise", value: "Testudo Pro" },
       { label: "Période", value: "Avr. 2026 - Aujourd'hui" },
       { label: "État", value: "En production" },
     ],
@@ -259,8 +259,8 @@ export const fr: Dict = {
       role: {
         title: "Mon rôle",
         text: [
-          "Je suis le seul développeur de l'application. L'équipe décrit ce que le produit doit faire, étape par étape, et je transforme chaque étape en logiciel qui fonctionne : design de l'interface, front end, API, base de données, tests, déploiement et serveur.",
-          "L'assistant IA, QualiBot, est la seule partie que j'ai construite avec un collègue.",
+          "Je développe l'application de bout en bout. L'équipe décrit ce que le produit doit faire, étape par étape, et je transforme chaque étape en logiciel qui fonctionne : design de l'interface, front end, API, base de données, tests, déploiement et serveur.",
+          "J'ai construit l'assistant IA, QualiBot, avec un collègue.",
         ],
       },
       built: {

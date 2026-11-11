@@ -37,7 +37,7 @@ export const en = {
   },
   proof: [
     { count: 2, suffix: " years", label: "of professional experience" },
-    { count: 1, suffix: " SaaS", label: "built alone and running in production" },
+    { count: 1, suffix: " SaaS", label: "built and running in production" },
     { count: 1600, suffix: "+", label: "automated tests in that codebase" },
     { count: 12, suffix: " modules", label: "designed and shipped in one product" },
   ],
@@ -76,7 +76,7 @@ export const en = {
         title: "Testudo",
         text: "A platform for ISO management systems: documents, audits, non-conformities, action plans, risks and indicators in one place. ISO 9001 is live, and it is built to extend to ISO 45001, ISO 14001, ISO 27001 and other standards.",
         points: [
-          "Built the whole product alone, from the first screen to production: 12 modules, multi-tenant with a subdomain and isolated data per customer.",
+          "Built the whole product, from the first screen to production: 12 modules, multi-tenant with a subdomain and isolated data per customer.",
           "Role-based access down to the record, real-time updates over WebSockets, PDF and Excel reporting in French and English.",
           "Built its AI assistant, QualiBot, with a colleague: retrieval over ISO 9001 knowledge and company documents.",
         ],
@@ -177,10 +177,10 @@ export const en = {
     items: [
       {
         role: "Full Stack Engineer",
-        company: "Maxula Consulting",
+        company: "Testudo Pro",
         place: "Tunis, Tunisia · Hybrid",
         dates: "Apr 2026 - Present",
-        text: "Sole developer of Testudo (testudo-pro.com): interface design, React front end, NestJS API, multi-tenant PostgreSQL, AI assistant, Docker and the production server.",
+        text: "Develop Testudo (testudo-pro.com) end to end: interface design, React front end, NestJS API, multi-tenant PostgreSQL, AI assistant, Docker and the production server.",
       },
       {
         role: "Data Engineer",
@@ -241,8 +241,8 @@ export const en = {
     title: "Testudo",
     lead: "A platform for ISO management systems, ISO 9001 first, built from the first screen to production.",
     facts: [
-      { label: "Role", value: "Sole developer" },
-      { label: "Company", value: "Maxula Consulting" },
+      { label: "Role", value: "Full Stack Engineer" },
+      { label: "Company", value: "Testudo Pro" },
       { label: "Period", value: "Apr 2026 - Present" },
       { label: "Status", value: "In production" },
     ],
@@ -258,8 +258,8 @@ export const en = {
       role: {
         title: "My role",
         text: [
-          "I am the only developer on the application. The team describes what the product must do, step by step, and I turn each step into working software: interface design, front end, API, database, tests, deployment and the server it runs on.",
-          "The AI assistant, QualiBot, is the one part I built with a colleague.",
+          "I develop the application end to end. The team describes what the product must do, step by step, and I turn each step into working software: interface design, front end, API, database, tests, deployment and the server it runs on.",
+          "I built the AI assistant, QualiBot, with a colleague.",
         ],
       },
       built: {
